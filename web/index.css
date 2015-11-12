@@ -1,6 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
 
 #container{
     width:1200px;
     height:675px;
     float:left;
+}
+#words_eclub{
+    width:600px;
+    height: 100px;
+    margin-left:10px;
+}
+#register{
+    width:140px;
+    height: 50px;
+    margin-left:10px;
+    margin-top:-50px;
+    margin-right: 5px;
+    float:left;
+}
+#login{
+    width:140px;
+    height: 50px;
+    margin-left: 170px;
+    margin-top:-50px;
+    float:left;
+}
+#form{
+    width:320px;
+    height: 350px;
+    margin-left: 42%;
+    text-align: center;
+    margin-top: -150px;
+    background-color:#FFF;
+}
+#words_eclub{
+    width:274px;
+    height: 64px;
+    margin-top: 240px;
+    margin-left: 45%;
+}
+
+#ueser_name{
+    width:60px;
+    height:40px;
+    margin-top:150px;
+
+}
+#ueser_password{
+    width:60px;
+    height:40px;
+    margin-top:150px;
+}
+
+#index_about{
+    width:60px;
+    height:30px;
+    margin-left:1000px;
+    margin-top:20px;
+    margin-right:50px;
+    float:left;
+}
+#index_contact{
+    width:60px;
+    height:30px;
+    margin-left:20px;
+    margin-top:20px;
+    float:left;
+}
+#form_text {
+    width: 280px;
+    height: 300px;
+    margin-left: 20px;
+    margin-top: -140px;
 }
