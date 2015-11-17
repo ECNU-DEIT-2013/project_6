@@ -32,7 +32,7 @@
     margin-left: 42%;
     text-align: center;
     margin-top: -150px;
-    background-color:#FFF;
+   /** background-color:#FFF;*/
 }
 #words_eclub{
     width:274px;
@@ -73,4 +73,14 @@
     height: 300px;
     margin-left: 20px;
     margin-top: -140px;
+}
+#test{
+    margin-top: 10px;
+    margin-left: 10px;
+    width:100px;
+}
+#test_button{
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 100px;
 }
