@@ -10,8 +10,7 @@ void main() {
   password = querySelector('#user_password');
   //list.add(username.text);
  // list.add(password.text);
-  //querySelector('#register').onClick.listen(user_register);
-  querySelector('#test_button').onClick.listen(user_register);
+  querySelector('#register').onClick.listen(user_register);
 
 }
 
@@ -20,5 +19,5 @@ void user_register(Event e){
   var httprequest=new HttpRequest();
     httprequest
       ..open('POST',path)
-      ..send(JSON.encode(username.value));
+      ..send(JSON.encode(username.value.toString()));
 }
