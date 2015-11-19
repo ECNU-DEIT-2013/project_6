@@ -22,12 +22,10 @@ void addCorsHeaders(HttpResponse res) {
 
 register(var x) async{
   var s =JSON.decode(x);
-  List list=[];
-  list= s.split(',');
-  print(list[0]);
-  print(list[2]);
-  var name=list[0];
-  var password=list[2];
+  var name=s[0];
+  var password=s[1];
+  print(name);
+  print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
   var query = await pool.prepare('insert into user_zl (password, name) values (?, ?)');
   await query.execute(['${password}', '${name}']);
