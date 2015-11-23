@@ -3,7 +3,6 @@ import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
 
 
-
 main() async {
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");

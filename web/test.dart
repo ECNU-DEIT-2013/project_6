@@ -1,5 +1,6 @@
 import 'dart:html';
 import'dart:convert' ;
+import 'package:cookie/cookie.dart'as cookie;
 
 var username,password;
 List list=[];
@@ -21,11 +22,21 @@ void user_register(Event e){
   password=document.getElementById('password').value;
   list.add(username);
   list.add(password);
-  querySelector('#test').text=username.toString();
+  //querySelector('#test').text=username.toString();
   var path = 'http://127.0.0.1:8080';
   var httprequest=new HttpRequest();
   httprequest
     ..open('POST',path)
     ..send(JSON.encode(list));
+
+
+ /** if( cookie.get('check_login')=='true'){
+    var s="true";
+    querySelector('#test').text=s.toString();
+  }
+  else{
+    var s="false";
+    querySelector('#test').text=s.toString();
+  }*/
 
 }
