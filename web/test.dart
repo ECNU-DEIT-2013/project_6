@@ -18,6 +18,7 @@ List list=[];
 }
 
 void user_register(Event e){
+  cookie.set('login', 'false');
   username=document.getElementById('username').value;
   password=document.getElementById('password').value;
   list.add(username);
