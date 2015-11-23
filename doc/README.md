@@ -1,18 +1,18 @@
 |  id            | description              |
 | -- -- -- -- -- |  -- -- -- -- -- -- -- -- |
-| container      | ×îÍâ²ãµÄdiv              |
-| register       | ×¢²á°´Å¥                 |
-| login          | µÇÂ¼°´Å¥                 |
-| form           | µÇÂ¼¡¢×¢²áÊ±µÄdiv        |
+| container      | æœ€å¤–å±‚çš„div              |
+| register       | æ³¨å†ŒæŒ‰é’®                 |
+| login          | ç™»å½•æŒ‰é’®                 |
+| form           | ç™»å½•ã€æ³¨å†Œæ—¶çš„div        |
 | classfile      | 10130340202              |
-| user_name      | ÓÃ»§ÃûµÄinput¿ò          |
-| user_password  | ÃÜÂëµÄinput¿ò            |
-| index_about    | about°´Å¥                |
-| index_contact  | contact°´Å¥              |
-| index_about    | about°´Å¥                |
-| words_eclub    | e-clubÍ¼Æ¬               |
-| club           | Á´½Ó½øÈëÉçÍÅµÄ°´Å¥       |
-| my             | Á´½Ó½øÈë¸öÈËĞÅÏ¢µÄ°´Å¥   |
-| button1        | Á´½Ó½øÈëÉÏ´«±¨Ãû±íµÄ°´Å¥ |
-| button2        | Á´½Ó½øÈëĞÅÏ¢Î¬»¤µÄ°´Å¥   |
-| button3        | Á´½Ó½øÈëÎÒµÄÍ¨ÖªµÄ°´Å¥   |
+| user_name      | ç”¨æˆ·åçš„inputæ¡†          |
+| user_password  | å¯†ç çš„inputæ¡†            |
+| index_about    | aboutæŒ‰é’®                |
+| index_contact  | contactæŒ‰é’®              |
+| index_about    | aboutæŒ‰é’®                |
+| words_eclub    | e-clubå›¾ç‰‡               |
+| club           | é“¾æ¥è¿›å…¥ç¤¾å›¢çš„æŒ‰é’®       |
+| my             | é“¾æ¥è¿›å…¥ä¸ªäººä¿¡æ¯çš„æŒ‰é’®   |
+| button1        | é“¾æ¥è¿›å…¥ä¸Šä¼ æŠ¥åè¡¨çš„æŒ‰é’® |
+| button2        | é“¾æ¥è¿›å…¥ä¿¡æ¯ç»´æŠ¤çš„æŒ‰é’®   |
+| button3        | é“¾æ¥è¿›å…¥æˆ‘çš„é€šçŸ¥çš„æŒ‰é’®   |
