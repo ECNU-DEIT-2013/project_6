@@ -29,6 +29,12 @@ void user_register(Event e){
   httprequest
     ..open('POST',path)
     ..send(JSON.encode(list));
+  //在已知用户名和密码正确的情况下，将username和password存到cookie当中（判断用户名和密码是否正确并传回的代码还没有写，但应该是从服务器传到客户端当中）
+  cookie.set('name', '${username}', expires: 7);
+  cookie.set('password', '${password}', expires: 7);
+  cookie.set('check', 'true', expires: 7);
+  var name=cookie.get('name');
+  querySelector('#test').text=name.toString();
 
 
  /** if( cookie.get('check_login')=='true'){
