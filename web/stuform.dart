@@ -1,9 +1,10 @@
-import 'dart:io';
-import 'package:sqljocky/sqljocky.dart';
-import 'dart:convert' show UTF8, JSON;
 
-main() async {
-  var userlist=new List();
+import 'dart:convert' show UTF8, JSON;
+import 'package:cookie/cookie.dart'as cookie;
+import 'dart:html';
+
+void main() {
+  /**var userlist=new List();
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user:"dec2013stu", password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select user_id,user_name, user_email from user_inf');
   results.forEach((row) {
@@ -29,6 +30,20 @@ main() async {
     // ..write('[\n "portmanteau", "fantabulous", "spork", "smog",\n "spanglish", "gerrymander", "turducken", "stagflation",\n "bromance", "freeware", "oxbridge", "palimony", "netiquette",\n "brunch", "blog", "chortle", "Hassenpfeffer", "Schnitzelbank"\n]\n')
       ..close();
 
-  }
+  }*/
+
+    var name=cookie.get('name');
+    var password =cookie.get('password');
+    List list=[];
+    list.add(name);
+    list.add(password);
+    document.getElementById('input1').value = name.toString();
+    //querySelector('#test').text=username.toString();
+   /** var path = 'http://127.0.0.1:8080';
+    var httprequest=new HttpRequest();
+    httprequest
+      ..open('POST',path)
+      ..send(JSON.encode(list));*/
+
 
 }
