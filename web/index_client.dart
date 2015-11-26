@@ -11,8 +11,10 @@ void main() {
 }
 
 void user_register(Event e) {
-  username = document.getElementById('user_name').value;
+  document.getElementById('user_name').value="TESTVALUE";
+ /** username = document.getElementById('user_name').value;
   password = document.getElementById('user_password').value;
+<<<<<<< HEAD
   if(username.length!=0) {
     list.add(username);
     list.add(password);
@@ -26,4 +28,13 @@ void user_register(Event e) {
     document.getElementById('test').value="error";
   }
 
+=======
+  list.add(username);
+  list.add(password);
+  var path = 'http://127.0.0.1:8080';
+  var httprequest = new HttpRequest();
+  httprequest
+    ..open('POST', path)
+    ..send(JSON.encode(list));*/
+>>>>>>> refs/remotes/origin/master
 }
