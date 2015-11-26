@@ -26,17 +26,26 @@ void addCorsHeaders(HttpResponse res) {
 
 check (var x) async{
   var s =JSON.decode(x);
-  var name=s[0];
-  var password=s[1];
-   print(name);
-   print(password);
+  var a=s[0].toString();
+  var b=s[1].toString();
+
+   print(a);
+   print(b);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
-  var results = await pool.query('select name, password from user_zl where name=" ${name}" and password="${password}"');
+  var results = await pool.query('select name, password from user_zl  ');
   results.forEach((row) {
     print('name: ${row[0]},password: ${row[1]}');
-    jsondata.add('${row[0]}');
-    if(jsondata!=null) print('ok');
-    else print('error');
-
+    jsondata.add('${row[0]},${row[1]}');
   });
+  List list=[];
+  for(var i=0;i<jsondata.length;i++){
+    if(a==jsondata[i][0]){
+      if(b==jsondata[i][1]){
+        list.add(jsondata[i][0]);
+      }
+    }
+  }
+  if(list!=null) print('ok');
+  else print('error');
+
 }
