@@ -11,7 +11,8 @@ void main() {
 }
 
 void user_register(Event e) {
-  username = document.getElementById('user_name').value;
+  document.getElementById('user_name').value="TESTVALUE";
+ /** username = document.getElementById('user_name').value;
   password = document.getElementById('user_password').value;
   list.add(username);
   list.add(password);
@@ -19,5 +20,5 @@ void user_register(Event e) {
   var httprequest = new HttpRequest();
   httprequest
     ..open('POST', path)
-    ..send(JSON.encode(list));
+    ..send(JSON.encode(list));*/
 }
