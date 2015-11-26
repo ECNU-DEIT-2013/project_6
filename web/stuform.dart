@@ -1,29 +1,30 @@
 import 'dart:html';
 import 'dart:convert';
-//import 'package:cookie/cookie.dart'as cookie;
+import 'package:cookie/cookie.dart'as cookie;
 
 
-/**var usersex;
+var usersex;
 var userdepartment;
 var usergrade;
 var usermajor;
 var userdorm;
 var useremail;
 var usertel;
-List list=[];*/
+List list=[];
 
 void main() {
-  print("tste");
-  print("test 2");
-  var ele=querySelector("#save");
+  var name=cookie.get('name');
+  var password =cookie.get('password');
+  document.getElementById('user_name').value = name.toString();
   querySelector("#save").onClick.listen(user_save);
-  querySelector('#save').onClick.listen(user_save);
+  querySelector("#reset").onClick.listen(user_reset);
+
 
 }
 
 void user_save(Event e) {
 
- /** usersex = document.getElementById('user_sex').value;
+  usersex = document.getElementById('user_sex').value;
   userdepartment = document.getElementById('user_department').value;
   usermajor = document.getElementById('user_major').value;
   usergrade = document.getElementById('user_grade').value;
@@ -36,12 +37,22 @@ void user_save(Event e) {
   list.add(usergrade);
   list.add(userdorm);
   list.add(useremail);
-  list.add(usertel);*/
-  document.getElementById('test').value = "sdadfa";
-  // var path = 'http://127.0.0.1:8080';
-  // var httprequest = new HttpRequest();
-  //httprequest
-  // ..open('POST', path)
-  // ..send(JSON.encode(list));
+  list.add(usertel);
+  var path = 'http://127.0.0.1:8080';
+  var httprequest = new HttpRequest();
+  httprequest
+   ..open('POST', path)
+   ..send(JSON.encode(list));
+  list=[];
+
   }
 
+void user_reset(Event e) {
+  document.getElementById('user_sex').value="";
+  document.getElementById('user_department').value="";
+  document.getElementById('user_major').value="";
+  document.getElementById('user_grade').value="";
+  document.getElementById('user_dorm').value="";
+  document.getElementById('user_email').value="";
+  document.getElementById('user_tel').value="";
+}
