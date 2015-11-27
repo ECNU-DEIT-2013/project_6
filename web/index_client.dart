@@ -11,14 +11,14 @@ void main() {
 }
 
 void user_register(Event e) {
-  document.getElementById('user_name').value="TESTVALUE";
- /** username = document.getElementById('user_name').value;
+
+  username = document.getElementById('user_name').value;
   password = document.getElementById('user_password').value;
   list.add(username);
   list.add(password);
-  var path = 'http://127.0.0.1:8080';
+  var path = 'http://127.0.0.1:8080/index';
   var httprequest = new HttpRequest();
   httprequest
     ..open('POST', path)
-    ..send(JSON.encode(list));*/
+    ..send(JSON.encode(list));
 }
