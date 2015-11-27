@@ -1,16 +1,22 @@
 import 'dart:io';
 import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
+import 'package:rest_frame/rest_frame.dart';
+
+Router stuform  = new Router();
+Router login  = new Router();
+
 
 
 main() async {
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");
+
   await for (var request in server) {
     addCorsHeaders(request.response);
     var jsondata = await request.transform(UTF8.decoder).join();
     register(jsondata);
-    save(jsondata);
+    //save(jsondata);
     request.response.close();
   }
 }

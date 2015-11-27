@@ -1,4 +1,4 @@
-|   id              |   description             |
+|   id （index页面）|   description             |
 |-------------------|-------------------------- |
 | container         | 最外层的div               |
 | register          | 注册按钮                  |
@@ -10,8 +10,25 @@
 | index_contact     | contact按钮               |
 | index_about       | about按钮                 |
 | words_eclub       | e-club图片                |
-| club              | 链接进入社团的按钮        |
-| my                | 链接进入个人信息的按钮    |
 | button1           | 链接进入上传报名表的按钮  |
 | button2           | 链接进入信息维护的按钮    |
 | button3           | 链接进入我的通知的按钮    |
+
+|   id （stu页面）  |   description              |
+|-------------------|--------------------------  |
+|container          |最外层的div                 |
+|index_about        |about按钮                   |
+|index_contact      |contact按钮                 |
+| club              | 链接进入社团的按钮         |
+| my                | 链接进入个人信息的按钮     |
+
+|   id （studentpage页面）  |   description              |
+|---------------------------|--------------------------  |
+|container                  |最外层的div                 |
+| button1                   | 链接进入上传报名表的按钮   |
+| button2                   | 链接进入信息维护的按钮     |
+| button3                   | 链接进入我的通知的按钮     |
+|stu                        |学生图标div                 |
+
+
+
