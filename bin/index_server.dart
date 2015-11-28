@@ -1,22 +1,16 @@
 import 'dart:io';
 import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
-import 'package:rest_frame/rest_frame.dart';
-
-Router stuform  = new Router();
-Router login  = new Router();
-
 
 
 main() async {
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");
-
   await for (var request in server) {
     addCorsHeaders(request.response);
     var jsondata = await request.transform(UTF8.decoder).join();
-    register(jsondata);
-    //save(jsondata);
+    await register(jsondata);
+    //await save(jsondata);
     request.response.close();
   }
 }
@@ -47,7 +41,9 @@ save(var x) async{
   var email=s[5];
   var tel=s[6];
   print(s);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
-  await query.execute(['${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+  print(sex);
+  print(department);
+  //var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+ // var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
+ // await query.execute(['${sex}', '${department}']);
 }

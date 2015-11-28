@@ -4,7 +4,7 @@ import 'dart:convert';
 
 
 
-List jsondata=[];
+
 
 
 
@@ -25,17 +25,19 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 check (var x) async{
+  List jsondata=[];
   var s =JSON.decode(x);
   var name=s[0];
   var password=s[1];
    print(name);
    print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
-  var results = await pool.query('select name, password from user_zl where name="name1" and password="101"');
+  var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
   results.forEach((row) {
-    print('name: ${row[0]},password: ${row[1]}');
-    jsondata.add('${row[0]}');
+    print('name: ${row[1]},password: ${row[0]}');
+      jsondata.add('${row[0]}');
+
   });
-  if(jsondata!=null) print('ok');//在运行jsondata!=null时，会输出ok——而在jsondata.length!=0时，会输出error?????debug时显示length不是0
-  else print('error');
+  if(jsondata.length!=0) print('ok');
+  else print ('error');
 }
