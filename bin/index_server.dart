@@ -5,6 +5,7 @@ import 'package:rest_frame/rest_frame.dart';
 
 Router routerindex = new Router();
 Router routerstuform = new Router();
+Router routercheck = new Router();
 var jsondata;//全局变量，用于接收客户端传来的数据。
 
 main() async {
@@ -13,30 +14,28 @@ main() async {
   print("Serving at ${server.address}:${server.port}");
   await for (HttpRequest request in server) {
     addCorsHeaders(request.response);
-<<<<<<< HEAD
-    var jsondata = await request.transform(UTF8.decoder).join();
-    await register(jsondata);
-    //await save(jsondata);
-=======
     jsondata = await request.transform(UTF8.decoder).join();
     print(jsondata);
     //register(jsondata);
     //save(jsondata);
-
     if (request.uri.path=="/index"){
       print("index page");
-    routerindex.route(request);
+      routerindex.route(request);
     }
     else if (request.uri.path=="/stuform"){
       print("stuform page");
-     routerstuform.route(request);
+      routerstuform.route(request);
     }
-   else {print("error!");}
->>>>>>> refs/remotes/origin/master
+    else if(request.uri.path=="/check"){
+      print("check page");
+      routercheck.route(request);
+    }
+    else {print("error!");}
     request.response.close();
-    routerindex.get(register,"/index" );
-    routerstuform.get(save,"/stuform");
   }
+  routerindex.get(register,"/index" );
+  routerstuform.get(save,"/stuform");
+  routercheck.get(check,"/check");
 }
 void addCorsHeaders(HttpResponse res) {
   res.headers.add("Access-Control-Allow-Origin", "*");
@@ -44,7 +43,7 @@ void addCorsHeaders(HttpResponse res) {
   res.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 }
 
- register( )  async {
+register( )  async {
   var s =JSON.decode(jsondata);
   var name=s[0];
   var password=s[1];
@@ -55,7 +54,7 @@ void addCorsHeaders(HttpResponse res) {
   await query.execute(['${password}', '${name}']);
 }
 
- save( )  async{
+save( )  async{
   var s =JSON.decode(jsondata);
   var sex=s[0];
   var department=s[1];
@@ -65,9 +64,25 @@ void addCorsHeaders(HttpResponse res) {
   var email=s[5];
   var tel=s[6];
   print(s);
-  print(sex);
-  print(department);
-  //var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
- // var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
- // await query.execute(['${sex}', '${department}']);
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
+  await query.execute(['${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+}
+
+check (var x) async{
+  List jsondata=[];
+  var s =JSON.decode(x);
+  var name=s[0];
+  var password=s[1];
+  print(name);
+  print(password);
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
+  var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
+  results.forEach((row) {
+    print('name: ${row[1]},password: ${row[0]}');
+    jsondata.add('${row[0]}');
+
+  });
+  if(jsondata.length!=0) print('ok');
+  else print ('error');
 }

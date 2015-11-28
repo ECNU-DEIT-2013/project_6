@@ -2,12 +2,6 @@ import 'dart:io';
 import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
 
-
-
-
-
-
-
 main() async {
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");
@@ -29,13 +23,13 @@ check (var x) async{
   var s =JSON.decode(x);
   var name=s[0];
   var password=s[1];
-   print(name);
-   print(password);
+  print(name);
+  print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
   var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
   results.forEach((row) {
     print('name: ${row[1]},password: ${row[0]}');
-      jsondata.add('${row[0]}');
+    jsondata.add('${row[0]}');
 
   });
   if(jsondata.length!=0) print('ok');
