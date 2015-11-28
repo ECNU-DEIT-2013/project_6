@@ -15,6 +15,7 @@ void main() {
 }
 
 void user_register(Event e) {
+<<<<<<< HEAD
  // document.getElementById('user_name').value="TESTVALUE";
   username = document.getElementById('user_name').value;//获取用户名
   password = document.getElementById('user_password').value;//获取密码
@@ -34,4 +35,16 @@ void user_register(Event e) {
         ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
     }
 
+=======
+
+  username = document.getElementById('user_name').value;
+  password = document.getElementById('user_password').value;
+  list.add(username);
+  list.add(password);
+  var path = 'http://127.0.0.1:8080/index';
+  var httprequest = new HttpRequest();
+  httprequest
+    ..open('POST', path)
+    ..send(JSON.encode(list));
+>>>>>>> refs/remotes/origin/master
 }

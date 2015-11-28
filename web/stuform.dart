@@ -15,11 +15,11 @@ List list=[];
 
 
 void main() {
-  var name=cookie.get('name');
-  var password =cookie.get('password');
-  document.getElementById('user_name').value = name.toString();
-  querySelector("#save").onClick.listen(user_save);
-  querySelector("#reset").onClick.listen(user_reset);
+  //var name=cookie.get('name');
+ // var password =cookie.get('password');
+  //document.getElementById('user_name').value = name.toString();
+ querySelector("#save").onClick.listen(user_save);
+ querySelector("#reset").onClick.listen(user_reset);
 
 
 }
@@ -40,7 +40,7 @@ void user_save(Event e) {
   list.add(userdorm);
   list.add(useremail);
   list.add(usertel);
-  var path = 'http://127.0.0.1:8080';
+  var path = 'http://127.0.0.1:8080/stuform';
   var httprequest = new HttpRequest();
   httprequest
    ..open('POST', path)
