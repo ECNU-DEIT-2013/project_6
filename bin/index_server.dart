@@ -13,6 +13,11 @@ main() async {
   print("Serving at ${server.address}:${server.port}");
   await for (HttpRequest request in server) {
     addCorsHeaders(request.response);
+<<<<<<< HEAD
+    var jsondata = await request.transform(UTF8.decoder).join();
+    await register(jsondata);
+    //await save(jsondata);
+=======
     jsondata = await request.transform(UTF8.decoder).join();
     print(jsondata);
     //register(jsondata);
@@ -27,6 +32,7 @@ main() async {
      routerstuform.route(request);
     }
    else {print("error!");}
+>>>>>>> refs/remotes/origin/master
     request.response.close();
     routerindex.get(register,"/index" );
     routerstuform.get(save,"/stuform");
@@ -59,7 +65,9 @@ void addCorsHeaders(HttpResponse res) {
   var email=s[5];
   var tel=s[6];
   print(s);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
-  await query.execute(['${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+  print(sex);
+  print(department);
+  //var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+ // var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
+ // await query.execute(['${sex}', '${department}']);
 }
