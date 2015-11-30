@@ -20,13 +20,16 @@ main() async {
     //save(jsondata);
     if (request.uri.path=="/index"){
       print("index page");
+      register();
       routerindex.route(request);
     }
     else if (request.uri.path=="/stuform"){
+      save();
       print("stuform page");
       routerstuform.route(request);
     }
     else if(request.uri.path=="/check"){
+      check();
       print("check page");
       routercheck.route(request);
     }
@@ -69,9 +72,9 @@ save( )  async{
   await query.execute(['${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
 }
 
-check (var x) async{
-  List jsondata=[];
-  var s =JSON.decode(x);
+check () async{
+  List list=[];
+  var s =JSON.decode(jsondata);
   var name=s[0];
   var password=s[1];
   print(name);
@@ -80,9 +83,9 @@ check (var x) async{
   var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
   results.forEach((row) {
     print('name: ${row[1]},password: ${row[0]}');
-    jsondata.add('${row[0]}');
-
+    var a='${row[1]}';
+    list.add("ghfg");
   });
-  if(jsondata.length!=0) print('ok');
+  if(list.length!=0) print('ok');
   else print ('error');
 }

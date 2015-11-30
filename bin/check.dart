@@ -26,12 +26,13 @@ check (var x) async{
   print(name);
   print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
-  var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
+  //var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
+  var results = await pool.query('select * from user_zl where name = "name1" and password = "101" ');
   results.forEach((row) {
     print('name: ${row[1]},password: ${row[0]}');
-    jsondata.add('${row[0]}');
-
+    jsondata.add(row[0]);
+    print(jsondata);
   });
-  if(jsondata.length!=0) print('ok');
+  if(jsondata!=null) print('ok');
   else print ('error');
 }

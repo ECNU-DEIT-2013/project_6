@@ -1,6 +1,7 @@
 
 import 'dart:html';
 import'dart:convert' ;
+import 'package:cookie/cookie.dart'as cookie;
 
 var username;
 var password;
@@ -29,6 +30,9 @@ void user_register(Event e) {
     httprequest
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
+    cookie.set('name', '${username}', expires: 7);
+    cookie.set('password', '${password}', expires: 7);
+    cookie.set('check', 'true', expires: 7);
   }
 
 }

@@ -15,9 +15,9 @@ List list=[];
 
 
 void main() {
-  //var name=cookie.get('name');
- // var password =cookie.get('password');
-  //document.getElementById('user_name').value = name.toString();
+  var name=cookie.get('name');
+  var password =cookie.get('password');
+  document.getElementById('user_name').value = name.toString();
  querySelector("#save").onClick.listen(user_save);
  querySelector("#reset").onClick.listen(user_reset);
 
