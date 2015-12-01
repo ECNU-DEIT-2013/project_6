@@ -44,10 +44,11 @@ void user_login(Event e) {
   if(username.length==0) {
     window.alert('用户名为空');
   }
-  else if(password.length==0){;
-  window.alert('密码为空');
+  else if(password.length==0){
+    window.alert('密码为空');
   }
   else{
+
     list.add(username);
     list.add(password);//在list上加入用户名和密码的信息
     var path ='http://127.0.0.1:8080/check';
@@ -55,6 +56,7 @@ void user_login(Event e) {
     httprequest
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
+
   }
 
 }
