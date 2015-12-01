@@ -86,6 +86,7 @@ check () async{
   results.forEach((row) {
     print('name: ${row[0]},password: ${row[1]}');
     a='${row[1]}';
+    print(a);
     if(a!=null) print('ok');
     else print ('error');
   });
