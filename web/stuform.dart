@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cookie/cookie.dart'as cookie;
 import 'package:rest_frame/rest_frame.dart';
 
-
 var usersex;
 var userdepartment;
 var usergrade;
@@ -18,6 +17,7 @@ void main() {
   var name=cookie.get('name');
   var password =cookie.get('password');
   document.getElementById('user_name').value = name.toString();
+  list.add(name);
  querySelector("#save").onClick.listen(user_save);
  querySelector("#reset").onClick.listen(user_reset);
 
