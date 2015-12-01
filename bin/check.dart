@@ -4,7 +4,7 @@ import 'dart:convert';
 
 
 
-List jsondata;
+List jsondata=[];
 
 
 
@@ -28,7 +28,7 @@ check (var x) async{
   var s =JSON.decode(x);
   var name=s[0];
   var password=s[1];
-  print(name);
+   print(name);
   print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
   var results = await pool.query('select name, password from user_zl where name=" ${name}" and password="${password}"');
