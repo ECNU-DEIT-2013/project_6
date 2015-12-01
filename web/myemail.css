@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+@charset "utf-8";
+/* CSS Document */
+
+
+#container{
+    width:1200px;
+    height:675px;
+    float:left;
+}
+#title{
+    width:1200px;
+    height:140px;
+    float:left;
+}
+#text{
+	color:#FFFFFF;
+	font-family: "微软雅黑";
+	font-size: 24px;
+	float:left;
+	margin-left: 250px;
+	width: 60px;
+	
+}
+#text1{
+	color:#FFFFFF;
+	font-family: "微软雅黑";
+	font-size: 24px;
+	float:left;
+	margin-left: 60px;
+	width: 60px;
+	
+}
+#club_name{
+	height: 30px;
+	width: 260px;
+	margin-left:5px;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	margin-top: 18px;
+	float: left;
+}
+	
+#theme{
+	height: 30px;
+	width: 260px;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	margin-top: 18px;
+	float: left;
+	margin-left: 5px;
+}
+#contain{
+	height：200px;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	margin-left: 250px;
+	width: 700px;
+	float: left;
+	margin-top: 0px;
+	height: 300px;
+	border: 1px solid #FFF;
+	
+}
+#button{
+	float: left;
+	margin-top: 10px;
+	margin-left: 550px;
+	width: 85px;
+	height: 38px;
+	}
