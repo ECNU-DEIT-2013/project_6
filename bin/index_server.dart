@@ -52,40 +52,44 @@ register( )  async {
   var password=s[1];
   print(name);
   print(password);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
-  var query = await pool.prepare('insert into user_zl (password, name) values (?, ?)');
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var query = await pool.prepare('insert into login (password, name) values (?, ?)');
   await query.execute(['${password}', '${name}']);
 }
 
 save( )  async{
   var s =JSON.decode(jsondata);
-  var sex=s[0];
-  var department=s[1];
-  var major=s[2];
-  var grade=s[3];
-  var dorm=s[4];
-  var email=s[5];
-  var tel=s[6];
+  var name=s[0];
+  var sex=s[1];
+  var department=s[2];
+  var major=s[3];
+  var grade=s[4];
+  var dorm=s[5];
+  var email=s[6];
+  var tel=s[7];
   print(s);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into user_inf (user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?)');
-  await query.execute(['${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+  var query = await pool.prepare('insert into user_inf (user_name,user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?, ?)');
+  await query.execute(['${name}','${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
 }
 
 check () async{
+  var a;
   List list=[];
   var s =JSON.decode(jsondata);
   var name=s[0];
   var password=s[1];
   print(name);
   print(password);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340202');
-  var results = await pool.query('select * from user_zl where name like "${name}" and password like "${password}" ');
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select * from login where name like "${name}" and password like "${password}" ');
   results.forEach((row) {
-    print('name: ${row[1]},password: ${row[0]}');
-    var a='${row[1]}';
-    list.add("ghfg");
+    print('name: ${row[0]},password: ${row[1]}');
+    a='${row[1]}';
+    if(a!=null) print('ok');
+    else print ('error');
   });
-  if(list.length!=0) print('ok');
-  else print ('error');
+  //print(a);
+ // print(list);
+
 }
