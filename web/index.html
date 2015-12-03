@@ -7,24 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script async type="application/dart" src="index_client.dart"></script>
     <script async src="packages/browser/dart.js"></script>
-<<<<<<< HEAD
-	<script async type="application/dart" src="index_client.dart"></script>
-    <script async src="packages/browser/dart.js"></script>
-    <script src='js/jquery-1.7.2.min.js'></script>
-    <script src='js/jquery.complexify.js'></script>
-    <script type="text/javascript">
-	$(function () {
-	$("#user_password").complexify({}, function (valid, complexity) {
-	if (!valid) {
-	$('#progress').css({'width':complexity + '%'}).removeClass('progressbarValid').addClass('progressbarInvalid');
-	} else {
-	$('#progress').css({'width':complexity + '%'}).removeClass('progressbarInvalid').addClass('progressbarValid');
-	}
-	$('#complexity').html(Math.round(complexity) + '%');
-	});
-	});
-</script>
-=======
     <script src='js/jquery-1.7.2.min.js'></script>
     <script src='js/jquery.complexify.js'></script>
     <script type="text/javascript">
@@ -39,7 +21,6 @@
             });
         });
     </script>
->>>>>>> refs/remotes/origin/10130340202
 
 </head>
 
@@ -78,16 +59,6 @@
         </div>
         <div id="progressbar"><div id="progress"></div>
             <div id="status">
-<<<<<<< HEAD
-				<input id="complexity">0%
-			</div>
-        </div>
-		<div id="qiangdu"><p>弱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强</p></div>
-      
-
-        <div>
-           <input id="register" type='image' src="index_picture/register.png" >
-=======
                 <input id="complexity">0%
             </div>
         </div>
@@ -96,7 +67,6 @@
 
         <div>
             <input id="register" type='image' src="index_picture/register.png" >
->>>>>>> refs/remotes/origin/10130340202
             <input id="login" type='image' src="index_picture/login.png">
 
         </div>
