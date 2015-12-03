@@ -2,6 +2,7 @@ import 'dart:html';
 import 'dart:convert';
 import 'package:cookie/cookie.dart'as cookie;
 import 'package:rest_frame/rest_frame.dart';
+import 'package:dialog/dialog.dart';
 
 InputElement  usersex_in;
 InputElement userdepartment_in;
@@ -22,18 +23,35 @@ List list=[];
 
 
 void main() {
+
   var name=cookie.get('name');
   var password =cookie.get('password');
-  querySelector('#user_name').text = name.toString();
-
+  //querySelector('#user_name').text = name.toString();
+  document.getElementById('user_name').value = name.toString();
   list.add(name);
-  querySelector("#save").onClick.listen(user_save);
-  querySelector("#reset").onClick.listen(user_reset);
+  querySelector("#save").onClick.listen((_) async{
+    var myConfirm1 = await confirm("是否保存基本信息？");
+    if (myConfirm1.toString()=='true'){
+      user_save();
+      alert('\n保存成功！');
+
+    }
+    else {alert('\n请继续维护信息！');}
+  });
+  querySelector("#reset").onClick.listen((_) async{
+    var myConfirm2 = await confirm("是否重置基本信息？");
+    if (myConfirm2.toString()=='true'){
+      user_reset();
+      alert('\n重置成功！');
+
+    }
+    else {alert('\n请继续维护信息！');}
+  });;
 
 
 }
 
-void user_save(Event e) {
+void user_save(){
   usersex_in = querySelector('#user_sex');
   userdepartment_in = querySelector('#user_department');
   usermajor_in = querySelector('#user_major');
@@ -65,13 +83,19 @@ void user_save(Event e) {
 
 }
 
-void user_reset(Event e) {
-  querySelector('#user_sex').text="";
+void user_reset() {
+  /*querySelector('#user_sex').text="";
   querySelector('#user_department').text="";
   querySelector('#user_major').text="";
   querySelector('#user_grade').text="";
   querySelector('#user_dorm').text="";
   querySelector('#user_email').text="";
-  querySelector('#user_tel').text="";
-
+  querySelector('#user_tel').text=""; */
+  document.getElementById('user_sex').value="";
+  document.getElementById('user_department').value="";
+  document.getElementById('user_major').value="";
+  document.getElementById('user_grade').value="";
+  document.getElementById('user_dorm').value="";
+  document.getElementById('user_email').value="";
+  document.getElementById('user_tel').value="";
 }

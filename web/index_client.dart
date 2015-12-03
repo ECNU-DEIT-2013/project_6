@@ -2,6 +2,7 @@
 import 'dart:html';
 import'dart:convert' ;
 import 'package:cookie/cookie.dart'as cookie;
+import 'package:dialog/dialog.dart';
 
 
 var username;
@@ -18,11 +19,11 @@ void user_register(Event e) {
   username = document.getElementById('user_name').value;//获取用户名
   password = document.getElementById('user_password').value;//获取密码
   if(username.length==0) {
-    window.alert('用户名为空');
+    alert('用户名为空');
 
   }
   else if(password.length==0){;
-  window.alert('密码为空');
+    alert('密码为空');
 
   }
   else{
@@ -34,6 +35,7 @@ void user_register(Event e) {
     httprequest
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
+    alert('注册成功！');
     cookie.set('name', '${username}', expires: 7);
     cookie.set('password', '${password}', expires: 7);
     cookie.set('check', 'true', expires: 7);
@@ -46,10 +48,10 @@ void user_login(Event e) {
   username = document.getElementById('user_name').value;//获取用户名
   password = document.getElementById('user_password').value;//获取密码
   if(username.length==0) {
-    window.alert('用户名为空');
+    alert('用户名为空');
   }
   else if(password.length==0){
-    window.alert('密码为空');
+    alert('密码为空');
   }
   else{
 
