@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script async type="application/dart" src="index_client.dart"></script>
     <script async src="packages/browser/dart.js"></script>
+<<<<<<< HEAD
 	<script async type="application/dart" src="index_client.dart"></script>
     <script async src="packages/browser/dart.js"></script>
     <script src='js/jquery-1.7.2.min.js'></script>
@@ -23,6 +24,22 @@
 	});
 	});
 </script>
+=======
+    <script src='js/jquery-1.7.2.min.js'></script>
+    <script src='js/jquery.complexify.js'></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#user_password").complexify({}, function (valid, complexity) {
+                if (!valid) {
+                    $('#progress').css({'width':complexity + '%'}).removeClass('progressbarValid').addClass('progressbarInvalid');
+                } else {
+                    $('#progress').css({'width':complexity + '%'}).removeClass('progressbarInvalid').addClass('progressbarValid');
+                }
+                $('#complexity').html(Math.round(complexity) + '%');
+            });
+        });
+    </script>
+>>>>>>> refs/remotes/origin/10130340202
 
 </head>
 
@@ -32,7 +49,7 @@
         font-size: 14px;
         color: #3498db;
         font-weight: bold;
-       background-image: url(picture/background.jpg);
+        background-image: url(picture/background.jpg);
         background-repeat:no-repeat;
     }
 
@@ -55,13 +72,14 @@
         <div id="form_text">
             <br></br>
             <br></br>
-       
-           <p> 用户名 <input id="user_name" type="text" placeholder="用户名" ></p>
+
+            <p> 用户名 <input id="user_name" type="text" placeholder="用户名" ></p>
             <br></br>
             <p>密码&nbsp;&nbsp;&nbsp;<input id="user_password" type="password" placeholder="密码"></p>
         </div>
         <div id="progressbar"><div id="progress"></div>
             <div id="status">
+<<<<<<< HEAD
 				<input id="complexity">0%
 			</div>
         </div>
@@ -70,6 +88,16 @@
 
         <div>
            <input id="register" type='image' src="index_picture/register.png" >
+=======
+                <input id="complexity">0%
+            </div>
+        </div>
+        <div id="qiangdu"><p>弱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强</p></div>
+
+
+        <div>
+            <input id="register" type='image' src="index_picture/register.png" >
+>>>>>>> refs/remotes/origin/10130340202
             <input id="login" type='image' src="index_picture/login.png">
 
         </div>
