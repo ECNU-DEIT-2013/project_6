@@ -27,8 +27,8 @@ void main() {
   querySelector('#user_name').text = name.toString();
 
   list.add(name);
- querySelector("#save").onClick.listen(user_save);
- querySelector("#reset").onClick.listen(user_reset);
+  querySelector("#save").onClick.listen(user_save);
+  querySelector("#reset").onClick.listen(user_reset);
 
 
 }
@@ -59,19 +59,19 @@ void user_save(Event e) {
   var path = 'http://127.0.0.1:8080/stuform';
   var httprequest = new HttpRequest();
   httprequest
-   ..open('POST', path)
-   ..send(JSON.encode(list));
+    ..open('POST', path)
+    ..send(JSON.encode(list));
   list=[];
 
-  }
+}
 
 void user_reset(Event e) {
   querySelector('#user_sex').text="";
- querySelector('#user_department').text="";
- querySelector('#user_major').text="";
-   querySelector('#user_grade').text="";
+  querySelector('#user_department').text="";
+  querySelector('#user_major').text="";
+  querySelector('#user_grade').text="";
   querySelector('#user_dorm').text="";
-   querySelector('#user_email').text="";
-   querySelector('#user_tel').text="";
+  querySelector('#user_email').text="";
+  querySelector('#user_tel').text="";
 
 }
