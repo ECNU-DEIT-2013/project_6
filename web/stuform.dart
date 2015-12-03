@@ -3,6 +3,14 @@ import 'dart:convert';
 import 'package:cookie/cookie.dart'as cookie;
 import 'package:rest_frame/rest_frame.dart';
 
+InputElement  usersex_in;
+InputElement userdepartment_in;
+InputElement usergrade_in;
+InputElement usermajor_in;
+InputElement userdorm_in;
+InputElement useremail_in;
+InputElement usertel_in;
+
 var usersex;
 var userdepartment;
 var usergrade;
@@ -16,7 +24,8 @@ List list=[];
 void main() {
   var name=cookie.get('name');
   var password =cookie.get('password');
-  document.getElementById('user_name').value = name.toString();
+  querySelector('#user_name').text = name.toString();
+
   list.add(name);
  querySelector("#save").onClick.listen(user_save);
  querySelector("#reset").onClick.listen(user_reset);
@@ -25,14 +34,21 @@ void main() {
 }
 
 void user_save(Event e) {
+  usersex_in = querySelector('#user_sex');
+  userdepartment_in = querySelector('#user_department');
+  usermajor_in = querySelector('#user_major');
+  usergrade_in = querySelector('#user_grade');
+  userdorm_in = querySelector('#user_dorm');
+  useremail_in = querySelector('#user_email');
+  usertel_in = querySelector('#user_tel');
 
-  usersex = document.getElementById('user_sex').value;
-  userdepartment = document.getElementById('user_department').value;
-  usermajor = document.getElementById('user_major').value;
-  usergrade = document.getElementById('user_grade').value;
-  userdorm = document.getElementById('user_dorm').value;
-  useremail = document.getElementById('user_email').value;
-  usertel = document.getElementById('user_tel').value;
+  usersex = usersex_in.value;
+  userdepartment = userdepartment_in.value;
+  usermajor = usermajor_in.value;
+  usergrade = usergrade_in.value;
+  userdorm =  userdorm_in.value;
+  useremail =useremail_in .value;
+  usertel = usertel_in.value;
   list.add(usersex);
   list.add(userdepartment);
   list.add(usermajor);
@@ -50,11 +66,12 @@ void user_save(Event e) {
   }
 
 void user_reset(Event e) {
-  document.getElementById('user_sex').value="";
-  document.getElementById('user_department').value="";
-  document.getElementById('user_major').value="";
-  document.getElementById('user_grade').value="";
-  document.getElementById('user_dorm').value="";
-  document.getElementById('user_email').value="";
-  document.getElementById('user_tel').value="";
+  querySelector('#user_sex').text="";
+ querySelector('#user_department').text="";
+ querySelector('#user_major').text="";
+   querySelector('#user_grade').text="";
+  querySelector('#user_dorm').text="";
+   querySelector('#user_email').text="";
+   querySelector('#user_tel').text="";
+
 }
