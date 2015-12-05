@@ -27,12 +27,12 @@
     float:left;
 }
 #form{
-    width:320px;
-    height: 350px;
-    margin-left: 42%;
-    text-align: center;
-    margin-top: -150px;
-    background-color:#FFF;
+	width:320px;
+	height: 370px;
+	margin-left: 42%;
+	text-align: center;
+	margin-top: -150px;
+	background-color:#FFF;
 }
 #words_eclub{
     width:274px;
