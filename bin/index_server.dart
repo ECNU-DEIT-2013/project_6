@@ -8,7 +8,7 @@ Router routerstuform = new Router();
 Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
-
+List my_email=[];
 main() async {
 
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
@@ -34,18 +34,17 @@ main() async {
       print("check page");
       routercheck.route(request);
     }
-    else if (request.uri.path == "/studentpage") {
-      studentpage();
-      print("studentpage page");
-      await for (var request in server) {
-        HttpResponse res = request.response;
-        addCorsHeaders(res);
-        res
-          ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
-          ..write(JSON.encode(jsondata))
-          ..close();
-      }
-      routercheck.route(request);
+    else if (request.uri.path == "/email") {
+      await studentpage();
+      print("email page");
+      await request.response
+        ..headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
+        request.response.write(JSON.encode(my_email));
+        request.response.close();
+      print("hello");
+      print(my_email);
+      //my_email=[];
+     // routercheck.route(request);
     }
     else {
       print("error!");
@@ -115,13 +114,17 @@ check() async{
 }
 
 studentpage() async{
-  List jsondata=[];
+
+  print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_name,club_inf from club_inf');
-  results.forEach((row) {
+  await results.forEach((row) {
     print('club: ${row[0]},inf: ${row[1]}');
-    jsondata.add('${row[0]}');
+    my_email.add('${row[0]}');
+    my_email.add('${row[1]}');
   });
+  print (my_email);
+  print("connect");
  /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");
   await for (var request in server) {
