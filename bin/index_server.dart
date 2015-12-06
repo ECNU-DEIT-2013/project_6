@@ -34,6 +34,19 @@ main() async {
       print("check page");
       routercheck.route(request);
     }
+    else if (request.uri.path == "/studentpage") {
+      studentpage();
+      print("studentpage page");
+      await for (var request in server) {
+        HttpResponse res = request.response;
+        addCorsHeaders(res);
+        res
+          ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
+          ..write(JSON.encode(jsondata))
+          ..close();
+      }
+      routercheck.route(request);
+    }
     else {
       print("error!");
     }
@@ -98,5 +111,26 @@ check() async{
   if (a != null) print('ok');
   else print('error');
   // print(list);
+
+}
+
+studentpage() async{
+  List jsondata=[];
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select club_name,club_inf from club_inf');
+  results.forEach((row) {
+    print('club: ${row[0]},inf: ${row[1]}');
+    jsondata.add('${row[0]}');
+  });
+ /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
+  print("Serving at ${server.address}:${server.port}");
+  await for (var request in server) {
+    HttpResponse res = request.response;
+    addCorsHeaders(res);
+    res
+      ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
+      ..write(JSON.encode(jsondata))
+      ..close();
+  }*/
 
 }
