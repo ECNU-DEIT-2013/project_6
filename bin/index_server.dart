@@ -38,7 +38,8 @@ main() async {
       await studentpage();
       print("email page");
       await request.response
-        ..headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
+        //..headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
         request.response.write(JSON.encode(my_email));
         request.response.close();
       print("hello");
