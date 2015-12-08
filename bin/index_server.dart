@@ -38,10 +38,6 @@ main() async {
       await studentpage();
       print("email page");
       await request.response
-<<<<<<< HEAD
-        //..headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
-=======
->>>>>>> refs/remotes/origin/10130340202
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
         request.response.write(JSON.encode(my_email));
         request.response.close();
