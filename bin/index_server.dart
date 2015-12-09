@@ -9,12 +9,8 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
-<<<<<<< HEAD
-List studentpage=[];
-=======
 List club_send=[];
 List clubuser=[];
->>>>>>> origin/master
 main() async {
 
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
@@ -41,7 +37,7 @@ main() async {
       routercheck.route(request);
     }
     else if (request.uri.path == "/email") {
-      await myemail();
+      await studentpage();
       print("email page");
       await request.response
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
@@ -61,8 +57,7 @@ main() async {
       //request.response.close();
       print(club_send);
       club_send=[];
-      if (jsondata!=""){
-        await clubsql();
+      if (jsondata!=""){await clubsql();
       await request.response.write(JSON.encode(clubuser));
        // ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
        request.response.close();}
@@ -135,8 +130,8 @@ check() async{
 
 }
 
-myemail() async{
-  my_email=[];
+studentpage() async{
+
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_name,club_inf from club_inf');
@@ -145,14 +140,20 @@ myemail() async{
     my_email.add('${row[0]}');
     my_email.add('${row[1]}');
   });
-  print (my_email.length);
+  print (my_email);
   print("connect");
+ /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
+  print("Serving at ${server.address}:${server.port}");
+  await for (var request in server) {
+    HttpResponse res = request.response;
+    addCorsHeaders(res);
+    res
+      ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
+      ..write(JSON.encode(jsondata))
+      ..close();
+  }*/
 
 }
-<<<<<<< HEAD
-
-
-=======
 clubsend() async{
 
   print("begin connect");
@@ -176,4 +177,3 @@ clubsql() async{
   });
   print(clubuser);
 }
->>>>>>> origin/master
