@@ -21,6 +21,7 @@
 	float:left;
 	margin-left: 250px;
 	width: 60px;
+	margin-top: 20px;
 	
 }
 #text1{
@@ -66,7 +67,21 @@
 #button{
 	float: left;
 	margin-top: 10px;
-	margin-left: 550px;
+	margin-left: 10px;
 	width: 85px;
 	height: 38px;
 	}
+#button1{
+	float: left;
+	margin-top: 10px;
+	margin-left: 500px;
+	width: 85px;
+	height: 38px;
+}
+
+#test{
+	width:50px;
+	margin-left: 400px;
+	height: 30px;
+	margin-top: -80px;
+}

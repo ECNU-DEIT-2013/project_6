@@ -1,14 +1,12 @@
 import 'dart:html';
-import 'dart:convert';
+import 'package:cookie/cookie.dart'as cookie;
+
+var n;
 
 void main(){
-
-
-   /** for (int i = 0; i < portmanteaux.length; i++) {
-      wordList.children.add(new LIElement()..text= portmanteaux[i]);
-    }
-  } else {
-    wordList.children.add(new LIElement()
-      ..text = 'Request failed, status=${request.status}');*/
+  //var n=cookie.get('email');
+  querySelector('#test').text="sds";
+  //document.getElementById('test').value=n.toString();
 
 }
+
