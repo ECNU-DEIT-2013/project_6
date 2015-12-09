@@ -9,6 +9,8 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
+List club_send=[];
+List clubuser=[];
 main() async {
 
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
@@ -45,6 +47,22 @@ main() async {
       print(my_email);
       //my_email=[];
      // routercheck.route(request);
+    }
+    else if(request.uri.path == "/clubsend"){
+      await clubsend();
+      print("clubsend page");
+      await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(club_send));
+      //request.response.close();
+      print(club_send);
+      club_send=[];
+      if (jsondata!=""){
+        await clubsql();
+      await request.response.write(JSON.encode(clubuser));
+       // ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+       request.response.close();}
+
     }
     else {
       print("error!");
@@ -136,4 +154,27 @@ studentpage() async{
       ..close();
   }*/
 
+}
+clubsend() async{
+
+  print("begin connect");
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select distinct club_name from club_user');
+  await results.forEach((row) {
+    print('clubname: ${row[0]}');
+    club_send.add('${row[0]}');
+  });
+  print (club_send);
+
+}
+clubsql() async{
+  var sql = jsondata;
+  print(sql);
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query(sql);
+  await results.forEach((row) {
+    print('username: ${row[0]}');
+    clubuser.add('${row[0]}');
+  });
+  print(clubuser);
 }
