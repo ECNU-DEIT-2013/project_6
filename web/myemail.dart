@@ -12,12 +12,8 @@ void main(){
   httpRequest
     ..open('GET', path)//拨号，打开一条通道
     ..onLoadEnd.listen((e) => requestComplete(httpRequest))
-<<<<<<< HEAD
-    ..send();
-=======
     ..open('POST', path)
     ..send(JSON.encode(name));
->>>>>>> refs/remotes/origin/10130340202
   querySelector('#button1').onClick.listen(previous_page);
   querySelector('#button').onClick.listen(next_page);
 
@@ -25,28 +21,18 @@ void main(){
 requestComplete(HttpRequest request) {
   if (request.status == 200) {
     //200代表数据正确拿到
-<<<<<<< HEAD
-     my_email = JSON.decode(request.responseText);
-=======
     my_email = JSON.decode(request.responseText);
->>>>>>> refs/remotes/origin/10130340202
     //decode代表解码
     querySelector("#club_name").text=my_email[0].toString();
     querySelector("#theme").text=my_email[0].toString();
     querySelector("#contain").text=my_email[1].toString();
     var n=my_email.length.toString();
-<<<<<<< HEAD
-     cookie.set('email', '${n}' , expires: 7);
-     var s=cookie.get('email');
-     querySelector("#theme").text=s.toString();
-=======
     cookie.set('email', '${n}' , expires: 7);
     var s=cookie.get('email');
     querySelector("#theme").text=s.toString();
->>>>>>> refs/remotes/origin/10130340202
   }
   else {
-    querySelector("#theme").text="没有邮件";
+    querySelector("#theme").text="error";
   }
 }
 

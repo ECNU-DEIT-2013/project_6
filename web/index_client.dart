@@ -24,7 +24,7 @@ void user_register(Event e) {
 
   }
   else if(password.length==0){;
-    alert('密码为空');
+  alert('密码为空');
 
   }
   else{
@@ -68,9 +68,9 @@ void user_login(Event e) {
 requestComplete(HttpRequest request) {
   if (request.status == 200) {
     //200代表数据正确拿到
-     s = JSON.decode(request.responseText);
-     print("hello");
-     print(s);
+    s = JSON.decode(request.responseText);
+    print("hello");
+    print(s);
     //decode代表解码
     if (s[0]=="flase"){
       alert('用户名已经存在');
