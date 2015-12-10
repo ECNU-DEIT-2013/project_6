@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECNU-CLUB</title>
+    <link  rel="stylesheet" href="clubsend.css">
+    <script async type="application/dart" src="clubsend.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    <script src="js/modernizr.min.js"></script>
+</head>
+
+<style>
+    body,td,th {
+        font-family:微软雅黑;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: bold;
+        background-repeat:no-repeat;
+        background-image: url(picture/background.jpg);
+    }
+
+</style>
+
+<body>
+<div id="container">
+    <div id="title">
+    </div>
+    <div id="clubselect">
+    <select id="clubname" >
+
+    </select>
+
+    <select id="state" >
+        <option value="已报名">已报名</option>
+        <option value="已发送通知">已发送通知</option>
+    </select>
+    <input id="search" type='image' src="picture/searchbutton.png">
+    </div>
+    <input  id="test" type="text" >
+    <div id="nametest"></div>
+</div>
+</body>
+</html>

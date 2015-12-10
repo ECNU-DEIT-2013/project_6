@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#container{
+    width:1200px;
+    height:675px;
+    float:left;
+}
+
+#title{
+    width:1200px;
+    height:140px;
+    float:left;
+}
+#clubselect{
+    margin-left: 250px;
+}
+#clubname{
+    margin-right:50px;
+
+}
+#state{
+    margin-right:50px;
+}
+select{
+    width:300px;
+    height:45px;
+}
+
+option{
+    height:45px;
+}
