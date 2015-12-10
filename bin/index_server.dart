@@ -63,7 +63,7 @@ main() async {
         await clubsql();
         await request.response
           ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
-        await request.response.write("[a.b]");
+        await request.response.write(JSON.encode(clubuser));
         request.response.close();
         print(clubuser);
         clubuser=[];
@@ -71,8 +71,12 @@ main() async {
     }
     else {
       print("error!");
+      /**
+       * 这行本来在括号下面，逻辑有问题。导致你还没有发送有效的地址请求，服务器就到了最后直接关闭了response。
+       */
+      request.response.close();
     }
-    request.response.close();
+
   }
   routerindex.get(register, "/index");
   routerstuform.get(save, "/stuform");
