@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/fakeloader.css">
+    <title>ECNU-CLUB</title>
+    <link rel="stylesheet" href="studentpage.css">
+    <script async type="application/dart" src="studentpage.dart"></script>
+
+</head>
+
+<style>
+    body,td,th {
+        font-family: cursive;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: bold;
+        background-repeat:no-repeat;
+        background-image: url(picture/background.jpg);
+    }
+
+</style>
+
+<body>
+<div class="fakeloader"></div>
+<div id="container">
+    <input id="index_about" type='image' src="index_picture/about.png">
+    <input id="index_contact" type='image' src="index_picture/contact.png">
+
+    <div id="stu" >
+        <img src="index_picture/stu.jpg">
+    </div>
+    <input id="button_1" type='image' src="index_picture/button1.png">
+    <a href="stuform.html"><input id="button_2" type='image' src="index_picture/button2.png"></a>
+    <a href="myemail.html"><input id="button_3" type='image' src="index_picture/button3.png"></a>
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/fakeloader.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#01bee8",
+            spinner:"spinner2"
+        });
+    });
+</script>
+
+</body>
+</html>

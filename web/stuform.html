@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECNU-CLUB</title>
+    <link  rel="stylesheet" href="stuform.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/fakeloader.css">
+    <script async type="application/dart" src="stuform.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fakeloader.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".fakeloader").fakeLoader({
+                timeToHide:1200,
+                bgColor:"#01bee8",
+                spinner:"spinner2"
+            });
+        });
+    </script>
+</head>
+
+<style>
+    body,td,th {
+        font-family: cursive;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: bold;
+        background-repeat:no-repeat;
+        background-image: url(picture/stuform.jpg);
+    }
+
+</style>
+
+<body>
+<div class="fakeloader"></div>
+<div id="container">
+<div id="stuform">
+    <div id="title">
+
+    </div>
+
+    <form>
+        <p class="text">姓名: <input class="input" id="user_name"type="text" placeholder="name"></p>
+        <p class="text">性别: <input class="input"  id="user_sex"type="text" placeholder="sex"></p>
+        <p class="text">院系: <input class="input" id="user_department"type="text" placeholder="department" ></p>
+        <p class="text">专业: <input class="input"  id="user_major"type="text" placeholder="major"></p>
+        <p class="text">年级: <input class="input"  id="user_grade"type="text" placeholder="grade"></p>
+        <p class="text">寝室: <input  class="input" id="user_dorm"type="text"  placeholder="dorm"></p>
+        <p class="text">邮箱: <input  class="input" id="user_email"type="text" placeholder="email"></p>
+        <p class="text">手机: <input  class="input" id="user_tel"type="text" placeholder="tel"></p>
+    </form>
+</div>
+    <div>
+        <input id="save" type='image' src="index_picture/savebutton.png">
+        <input id="reset" type='image' src="index_picture/resetbutton.png">
+       <a id="herf"></a> <input id="return" type='image' src="index_picture/returnbutton.png">
+    </div>
+</div>
+
+
+
+</body>
+</html>

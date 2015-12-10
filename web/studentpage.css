@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#container{
+    width:1200px;
+    height:675px;
+    float:left;
+}
+#index_about{
+    width:60px;
+    height:30px;
+    margin-left:1000px;
+    margin-top:20px;
+    margin-right:50px;
+    float:left;
+}
+#index_contact{
+    width:60px;
+    height:30px;
+    margin-left:20px;
+    margin-top:20px;
+    float:left;
+}
+#stu{
+    width:148px;
+    height:161px;
+    margin-left:100px;
+    margin-top:80px;
+    float: left;
+}
+#button_1{
+    width:230px;
+    height:230px;
+    margin-left:90px;
+    margin-top:55px;
+    float:left;
+}
+#button_2{
+    width:230px;
+    height:230px;
+    margin-left:85px;
+    margin-top:40px;
+    float:left;
+}
+#button_3{
+    width:230px;
+    height:230px;
+    margin-left:85px;
+    margin-top:40px;
+    float:left;
+}
+
+#test{
+    width:100px;
+    height:40px;
+    margin-left: 30px;
+}
