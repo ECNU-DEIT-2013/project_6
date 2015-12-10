@@ -54,14 +54,20 @@ main() async {
       await request.response
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
       request.response.write(JSON.encode(club_send));
-      //request.response.close();
+      request.response.close();
       print(club_send);
-      club_send=[];
-      if (jsondata!=""){await clubsql();
-      await request.response.write(JSON.encode(clubuser));
-       // ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
-       request.response.close();}
+      club_send=[];}
 
+    else if(request.uri.path == "/clubsendstu"){
+      if (jsondata!="") {
+        await clubsql();
+        await request.response
+          ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+        await request.response.write("[a.b]");
+        request.response.close();
+        print(clubuser);
+        clubuser=[];
+      }
     }
     else {
       print("error!");
@@ -175,5 +181,5 @@ clubsql() async{
     print('username: ${row[0]}');
     clubuser.add('${row[0]}');
   });
-  print(clubuser);
+
 }
