@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECNU-CLUB</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="style.css">
+    <script async type="application/dart" src="admin.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    <script src='js/jquery-1.7.2.min.js'></script>
+    <script src='js/jquery.complexify.js'></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#user_password").complexify({}, function (valid, complexity) {
+                if (!valid) {
+                    $('#progress').css({'width':complexity + '%'}).removeClass('progressbarValid').addClass('progressbarInvalid');
+                } else {
+                    $('#progress').css({'width':complexity + '%'}).removeClass('progressbarInvalid').addClass('progressbarValid');
+                }
+                $('#complexity').html(Math.round(complexity) + '%');
+            });
+        });
+    </script>
+
+</head>
+
+<style>
+    body,td,th {
+        font-family: cursive;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: bold;
+        background-image: url(picture/background.jpg);
+        background-repeat:no-repeat;
+    }
+</style>
+
+<body>
+<div id="container">
+
+    <input id="index_about" type='image' src="index_picture/about.png">
+    <input id="index_contact" type='image' src="index_picture/contact.png">
+
+    <div id="words_eclub">
+        <img src="index_picture/E-CLUB.png" />
+    </div>
+    <div id="form">
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div id="form_text">
+            <br></br>
+            <br></br>
+
+            <p> 用户名 <input id="user_name" type="text" placeholder="用户名" ></p>
+            <br></br>
+            <p>密码&nbsp;&nbsp;&nbsp;<input id="user_password" type="password" placeholder="密码"></p>
+        </div>
+        <div id="progressbar"><div id="progress"></div>
+            <div id="status">
+                <input id="complexity">0%
+            </div>
+        </div>
+        <div id="qiangdu"><p>弱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强</p></div>
+
+
+        <div>
+            <input id="login" type='image' src="index_picture/login.png">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>

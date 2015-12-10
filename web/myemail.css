@@ -5,14 +5,14 @@
 
 
 #container{
-    width:1200px;
-    height:675px;
-    float:left;
+	width:1200px;
+	height:675px;
+	float:left;
 }
 #title{
-    width:1200px;
-    height:140px;
-    float:left;
+	width:1200px;
+	height:140px;
+	float:left;
 }
 #text{
 	color:#FFFFFF;
@@ -21,7 +21,8 @@
 	float:left;
 	margin-left: 250px;
 	width: 60px;
-	
+	margin-top: 20px;
+
 }
 #text1{
 	color:#FFFFFF;
@@ -30,7 +31,7 @@
 	float:left;
 	margin-left: 60px;
 	width: 60px;
-	
+
 }
 #club_name{
 	height: 30px;
@@ -41,7 +42,7 @@
 	margin-top: 23px;
 	float: left;
 }
-	
+
 #theme{
 	height: 30px;
 	width: 260px;
@@ -52,7 +53,7 @@
 	margin-left: 5px;
 }
 #contain{
-	height：200px;
+	height:200px;
 	font-size: 22px;
 	font-family: "微软雅黑";
 	margin-left: 250px;
@@ -61,12 +62,26 @@
 	margin-top: 0px;
 	height: 300px;
 	border: 1px solid #FFF;
-	
+
 }
 #button{
 	float: left;
 	margin-top: 10px;
-	margin-left: 550px;
+	margin-left: 10px;
 	width: 85px;
 	height: 38px;
-	}
+}
+#button1{
+	float: left;
+	margin-top: 10px;
+	margin-left: 500px;
+	width: 85px;
+	height: 38px;
+}
+
+#test{
+	width:50px;
+	margin-left: 400px;
+	height: 30px;
+	margin-top: -80px;
+}
