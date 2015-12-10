@@ -21,18 +21,34 @@ void searchbutton(Event e){
   var clubname = document.getElementById('clubname').value;
   var state = document.getElementById('state').value;
   var sql='SELECT user_name FROM club_user WHERE club_name="'+clubname.toString()+'" AND state="'+state.toString()+'"';
+<<<<<<< HEAD
   document.getElementById('test').value=sql.toString();
+=======
+   document.getElementById('test').value=sql.toString();
+>>>>>>> origin/master
   var path = 'http://127.0.0.1:8080/clubsendstu';
   var httprequest = new HttpRequest();
-  httprequest
+  /**
+   * comment by feng xiang ：问题：为何两次请求？你第二次请求上没有send(sql)，当然无法获取正确
+   * 值。并且你第一个请求没有listen，所以根本无法获取。
+   */
+  /*httprequest
     ..open('POST', path)
+<<<<<<< HEAD
     ..send(sql);
   var path1 = 'http://127.0.0.1:8080/clubsendstu';
   var httpRequest = new HttpRequest();
   httpRequest
     ..open('GET', path1)
+=======
+    ..send(sql);*/
+  var path1 = 'http://127.0.0.1:8080/clubsendstu';
+  var httpRequest = new HttpRequest();
+  httpRequest
+    ..open('POST', path1)
+>>>>>>> origin/master
     ..onLoadEnd.listen((e) => requestComplete1(httpRequest))
-    ..send();
+    ..send(sql);
 }
 requestComplete(HttpRequest request) {
   if (request.status == 200) {
