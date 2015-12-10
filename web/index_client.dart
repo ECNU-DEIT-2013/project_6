@@ -28,6 +28,8 @@ void user_register(Event e) {
 
   }
   else{
+    window.location.href="stu.html";
+    alert('注册成功！');
     list.add(username);
     list.add(password);//在list上加入用户名和密码的信息
     var path ='http://127.0.0.1:8080/index';
@@ -77,8 +79,7 @@ requestComplete(HttpRequest request) {
     }
     else
     {
-      window.location.href="stu.html";
-      alert('注册成功！');
+
       cookie.set('name', '${username}', expires: 7);
       cookie.set('password', '${password}', expires: 7);
       //cookie.set('check', 'true', expires: 7);

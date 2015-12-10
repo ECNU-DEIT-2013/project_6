@@ -86,7 +86,7 @@ main() async {
       // routercheck.route(request);
     }
 
-    else if(request.uri.path == "/clubsend"){
+    else if (request.uri.path == "/clubsend") {
       await clubsend();
       print("clubsend page");
       await request.response
@@ -94,21 +94,18 @@ main() async {
       request.response.write(JSON.encode(club_send));
       request.response.close();
       print(club_send);
-      club_send=[];}
+      club_send = [];
+    }
 
-    else if(request.uri.path == "/clubsendstu"){
-      if (jsondata!="") {
+    else if (request.uri.path == "/clubsendstu") {
+      if (jsondata != "") {
         await clubsql();
         await request.response
           ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
-<<<<<<< HEAD
         await request.response.write("[a.b]");
-=======
-        await request.response.write(JSON.encode(clubuser));
->>>>>>> origin/master
         request.response.close();
         print(clubuser);
-        clubuser=[];
+        clubuser = [];
       }
     }
     else {
@@ -118,7 +115,6 @@ main() async {
        */
       request.response.close();
     }
-
   }
   routerindex.get(register, "/index");
   routerstuform.get(save, "/stuform");
