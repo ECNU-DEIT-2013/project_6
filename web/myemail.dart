@@ -26,7 +26,8 @@ requestComplete(HttpRequest request) {
     querySelector("#club_name").text=my_email[0].toString();
     querySelector("#theme").text=my_email[0].toString();
     querySelector("#contain").text=my_email[1].toString();
-    var n=my_email.length.toString();
+    var num=my_email.length/2;
+    var n=num.toString();
     cookie.set('email', '${n}' , expires: 7);
     var s=cookie.get('email');
     querySelector("#theme").text=s.toString();

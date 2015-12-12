@@ -28,8 +28,6 @@ void user_register(Event e) {
 
   }
   else{
-    window.location.href="stu.html";
-    alert('注册成功！');
     list.add(username);
     list.add(password);//在list上加入用户名和密码的信息
     var path ='http://127.0.0.1:8080/index';
@@ -39,6 +37,8 @@ void user_register(Event e) {
       ..onLoadEnd.listen((e) => requestComplete(httprequest))
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
+     // ..open('GET', path)//拨号，打开一条通道
+    //  ..onLoadEnd.listen((e) => requestComplete(httprequest));
 
   }
 
@@ -71,18 +71,16 @@ requestComplete(HttpRequest request) {
   if (request.status == 200) {
     //200代表数据正确拿到
     s = JSON.decode(request.responseText);
-    print("hello");
-    print(s);
     //decode代表解码
-    if (s[0]=="flase"){
+    if (s==""){
       alert('用户名已经存在');
     }
     else
     {
-
+      window.location.href="stu.html";
+      alert('注册成功！');
       cookie.set('name', '${username}', expires: 7);
       cookie.set('password', '${password}', expires: 7);
-      //cookie.set('check', 'true', expires: 7);
     }
   }
 }

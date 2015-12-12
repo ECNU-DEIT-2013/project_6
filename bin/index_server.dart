@@ -21,48 +21,45 @@ main() async {
     addCorsHeaders(request.response);
     jsondata = await request.transform(UTF8.decoder).join();
     print(jsondata);
-    //register(jsondata);
-    //save(jsondata);
-    if (request.uri.path == "/index") {
-      print("index page");
-      register();
-      routerindex.route(request);
-      /**
-          var s = JSON.decode(jsondata);
-          var name=s[0];
-          print (name);
-          //register(jsondata);
-          //save(jsondata);
-          if (request.uri.path == "/index") {
-          print("index page");
-          var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-          var string = 'select * from login where name = "${name}" ';
-          var results = await pool.query(string);
-          await results.forEach((row) {
-          print('name: ${row[0]}');
-          register_check='${row[0]}';
-          });
-          if(register_check==null)
-          {
-          register();
-          name_check="true";
-          print(name_check);
+     if (request.uri.path == "/index") {
+      await register();
+       print("index page");
+     await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(name_check));
+      request.response.close();
+       }
+    /** var s = JSON.decode(jsondata);
+        var name=s[0];
+        print (name);
+        if (request.uri.path == "/index") {
+        print("index page");
+        var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+        var string = 'select * from login where name = "${name}" ';
+        var results = await pool.query(string);
+        await results.forEach((row) {
+        print('name: ${row[0]}');
+        register_check='${row[0]}';
+        });
+        if(register_check==null)
+        {
+        name_check="true";
+        await register();
+        print(name_check);
+        }
+        else{
+        name_check="false";
+        print(name_check);
+        }
+        await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+        List list=[];
+        list.add('${name_check}');
+        print(list);
+        request.response.write(JSON.encode(list));
+        request.response.close();
+        }*/
 
-          }
-          else{
-          name_check="false";
-          print(name_check);
-          }
-          await request.response
-          ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
-          List list=[];
-          list.add('${name_check}');
-          print(list);
-          request.response.write(JSON.encode(list));
-          request.response.close();
-          }
-       */
-    }
     else if (request.uri.path == "/stuform") {
       save();
       print("stuform page");
@@ -80,7 +77,7 @@ main() async {
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
       request.response.write(JSON.encode(my_email));
       request.response.close();
-      print("hello");
+      //print("hello");
       print(my_email);
       //my_email=[];
       // routercheck.route(request);
@@ -128,14 +125,32 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 register() async {
+  print("hello");
   var s = JSON.decode(jsondata);
   var name = s[0];
   var password = s[1];
   print(name);
   print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into login (password, name) values (?, ?)');
-  await query.execute(['${password}', '${name}']);
+  var string = 'select * from login where name = "${name}" ';
+  var results = await pool.query(string);
+  await results.forEach((row) {
+    print('name: ${row[0]}');
+    register_check='${row[0]}';
+  });
+  if(register_check==null){
+    var query = await pool.prepare('insert into login (password, name) values (?, ?)');
+    await query.execute(['${password}', '${name}']);
+    print("insert");
+    name_check="true";
+  }
+  else{
+    print("已注册");
+    name_check="";
+  }
+  print(name_check);
+  register_check="";
+
 }
 
 save() async{
@@ -190,17 +205,6 @@ studentpage() async{
   });
   print (my_email);
   print("connect");
-  /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
-      print("Serving at ${server.address}:${server.port}");
-      await for (var request in server) {
-      HttpResponse res = request.response;
-      addCorsHeaders(res);
-      res
-      ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
-      ..write(JSON.encode(jsondata))
-      ..close();
-      }*/
-
 }
 clubsend() async{
 
