@@ -1,4 +1,3 @@
-
 import 'dart:html';
 import'dart:convert' ;
 import 'package:cookie/cookie.dart'as cookie;
@@ -37,7 +36,7 @@ void user_register(Event e) {
       ..onLoadEnd.listen((e) => requestComplete(httprequest))
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
-     // ..open('GET', path)//拨号，打开一条通道
+    // ..open('GET', path)//拨号，打开一条通道
     //  ..onLoadEnd.listen((e) => requestComplete(httprequest));
 
   }
