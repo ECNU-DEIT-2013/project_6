@@ -55,8 +55,8 @@ void sendmessage(Event e){
   //alert(check_name);
   var message=document.getElementById("message").value;//获取textarea中所要发送的信息
   for(i=0;i<check_name.length;i++){
-   // sql=sql+'or WHERE user_name="'+check_name[i]+'"';
-    sqllist.add('UPDATE club_user SET message = "'+message.toString()+'" WHERE user_name="'+check_name[i]+'"');
+    //sqllist.add('UPDATE club_user SET message = "'+message.toString()+'" WHERE user_name="'+check_name[i]+'"');
+    sqllist.add('INSERT INTO user_message(user_name,message) VALUES("'+check_name[i]+'","'+message.toString()+'")');
   }
   var path = 'http://127.0.0.1:8080/clubsendsql';
   var httpRequest = new HttpRequest();
@@ -64,7 +64,7 @@ void sendmessage(Event e){
     ..open('POST', path)
     ..onLoadEnd.listen((e) => requestComplete1(httpRequest))
     ..send(JSON.encode(sqllist));
-  alert(sqllist);
+  alert("发送成功");
   sqllist=[];
   check_name=[];
 
