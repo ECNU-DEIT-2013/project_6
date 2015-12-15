@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#container{
+    width:1200px;
+    height:675px;
+    float:left;
+}
+
+#title{
+    width:1200px;
+    height:140px;
+    float:left;
+    margin-bottom:20px;
+}
+#clubselect{
+    margin-left: 250px;
+    float:left;
+}
+
+#clubname{
+    margin-right:50px;
+    color: #08819c;
+    font-size: 18px;
+    font-family: "微软雅黑";
+}
+#state{
+    margin-right:50px;
+    color: #08819c;
+    font-size: 18px;
+    font-family: "微软雅黑";
+}
+#namelist{
+    height:250px;
+    font-size:16px;
+}
+#nametitle{
+    color: #08819c;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#clubbutton{
+    margin-left: 50px
+}
+#send{
+    margin-left:100px;
+    margin-top:10px;
+}
+#message{
+    background-color: #FFFFFF;
+    width:460px;
+    height:250px;
+    margin-top: 10px;
+    margin-bottom:20px
+    font-family:微软雅黑;
+    font-size: 16px;
+    color: #3498db;
+}
+#left{
+    margin-left: 251px;
+    width:359px;
+    height:400px;
+    float:left;
+}
+#right{
+    width:590px;
+    height:400px;
+    float:left;
+}
+#messagetitle{
+    color: #08819c;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    margin-top:10px;
+}
+select{
+    width:300px;
+
+    height:45px;
+}
+
+option{
+    height:45px;
+}
+.option{
+    color:white;
+    font-size:0px;
+    display:none;
+
+}

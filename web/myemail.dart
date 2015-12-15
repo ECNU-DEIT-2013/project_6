@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dialog/dialog.dart';
 import 'package:cookie/cookie.dart'as cookie;
 var num=0;
+int number;
 List<String> my_email=[];
 
 void main(){
@@ -26,13 +27,15 @@ requestComplete(HttpRequest request) {
     querySelector("#club_name").text=my_email[0].toString();
     querySelector("#theme").text=my_email[0].toString();
     querySelector("#contain").text=my_email[1].toString();
-    var n=my_email.length.toString();
+    var num=my_email.length/2;
+    var n=num.toString();
     cookie.set('email', '${n}' , expires: 7);
     var s=cookie.get('email');
+    number=int.parse(s);
     querySelector("#theme").text=s.toString();
   }
   else {
-    querySelector("#theme").text="没有邮件";
+    querySelector("#theme").text="error";
   }
 }
 
@@ -41,8 +44,8 @@ void previous_page(Event e){
   else{
     num=num-2;
     querySelector("#club_name").text=my_email[num].toString();
-    querySelector("#theme").text=my_email[num].toString();
     querySelector("#contain").text=my_email[num+1].toString();
+    querySelector("#theme").text=number.toString();
   }
 }
 
@@ -51,7 +54,10 @@ void next_page(Event e){
   if (num<=n-2){
     num=num+2;
     querySelector("#club_name").text=my_email[num].toString();
-    querySelector("#theme").text=my_email[num].toString();
+    if(number>0){
+      number=number-1;
+    }
+    querySelector("#theme").text=number.toString();
     querySelector("#contain").text=my_email[num+1].toString();
 
   }
