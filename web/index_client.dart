@@ -36,11 +36,7 @@ void user_register(Event e) {
       ..onLoadEnd.listen((e) => requestComplete(httprequest))
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
-<<<<<<< HEAD
     // ..open('GET', path)//拨号，打开一条通道
-=======
-     // ..open('GET', path)//拨号，打开一条通道
->>>>>>> origin/master
     //  ..onLoadEnd.listen((e) => requestComplete(httprequest));
 
   }
