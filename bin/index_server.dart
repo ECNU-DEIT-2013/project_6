@@ -9,6 +9,8 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
+var register_check;
+var  name_check;
 List club_send=[];
 List clubuser=[];
 main() async {
@@ -19,13 +21,45 @@ main() async {
     addCorsHeaders(request.response);
     jsondata = await request.transform(UTF8.decoder).join();
     print(jsondata);
-    //register(jsondata);
-    //save(jsondata);
-    if (request.uri.path == "/index") {
-      print("index page");
-      register();
-      routerindex.route(request);
-    }
+     if (request.uri.path == "/index") {
+      await register();
+       print("index page");
+     await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(name_check));
+      request.response.close();
+       }
+    /** var s = JSON.decode(jsondata);
+        var name=s[0];
+        print (name);
+        if (request.uri.path == "/index") {
+        print("index page");
+        var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+        var string = 'select * from login where name = "${name}" ';
+        var results = await pool.query(string);
+        await results.forEach((row) {
+        print('name: ${row[0]}');
+        register_check='${row[0]}';
+        });
+        if(register_check==null)
+        {
+        name_check="true";
+        await register();
+        print(name_check);
+        }
+        else{
+        name_check="false";
+        print(name_check);
+        }
+        await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+        List list=[];
+        list.add('${name_check}');
+        print(list);
+        request.response.write(JSON.encode(list));
+        request.response.close();
+        }*/
+
     else if (request.uri.path == "/stuform") {
       save();
       print("stuform page");
@@ -41,14 +75,15 @@ main() async {
       print("email page");
       await request.response
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
-        request.response.write(JSON.encode(my_email));
-        request.response.close();
-      print("hello");
+      request.response.write(JSON.encode(my_email));
+      request.response.close();
+      //print("hello");
       print(my_email);
       //my_email=[];
-     // routercheck.route(request);
+      // routercheck.route(request);
     }
-    else if(request.uri.path == "/clubsend"){
+
+    else if (request.uri.path == "/clubsend") {
       await clubsend();
       print("clubsend page");
       await request.response
@@ -56,23 +91,27 @@ main() async {
       request.response.write(JSON.encode(club_send));
       request.response.close();
       print(club_send);
-      club_send=[];}
+      club_send = [];
+    }
 
-    else if(request.uri.path == "/clubsendstu"){
-      if (jsondata!="") {
+    else if (request.uri.path == "/clubsendstu") {
+      if (jsondata != "") {
         await clubsql();
         await request.response
           ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
         await request.response.write("[a.b]");
         request.response.close();
         print(clubuser);
-        clubuser=[];
+        clubuser = [];
       }
     }
     else {
       print("error!");
+      /**
+       * 这行本来在括号下面，逻辑有问题。导致你还没有发送有效的地址请求，服务器就到了最后直接关闭了response。
+       */
+      request.response.close();
     }
-    request.response.close();
   }
   routerindex.get(register, "/index");
   routerstuform.get(save, "/stuform");
@@ -86,14 +125,32 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 register() async {
+  print("hello");
   var s = JSON.decode(jsondata);
   var name = s[0];
   var password = s[1];
   print(name);
   print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into login (password, name) values (?, ?)');
-  await query.execute(['${password}', '${name}']);
+  var string = 'select * from login where name = "${name}" ';
+  var results = await pool.query(string);
+  await results.forEach((row) {
+    print('name: ${row[0]}');
+    register_check='${row[0]}';
+  });
+  if(register_check==null){
+    var query = await pool.prepare('insert into login (password, name) values (?, ?)');
+    await query.execute(['${password}', '${name}']);
+    print("insert");
+    name_check="true";
+  }
+  else{
+    print("已注册");
+    name_check="";
+  }
+  print(name_check);
+  register_check="";
+
 }
 
 save() async{
@@ -126,7 +183,7 @@ check() async{
   await results.forEach((row) {
     print('name: ${row[0]},password: ${row[1]}');
     a = '${row[1]}';
-   // print(a);
+    // print(a);
 
   });
   //print(a);
@@ -137,10 +194,10 @@ check() async{
 }
 
 studentpage() async{
-
+  var name = JSON.decode(jsondata);
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var results = await pool.query('select club_name,club_inf from club_inf');
+  var results = await pool.query('select club_name,club_inf,stu_name from club_inf where stu_name= "${name}" ');
   await results.forEach((row) {
     print('club: ${row[0]},inf: ${row[1]}');
     my_email.add('${row[0]}');
@@ -148,17 +205,6 @@ studentpage() async{
   });
   print (my_email);
   print("connect");
- /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
-  print("Serving at ${server.address}:${server.port}");
-  await for (var request in server) {
-    HttpResponse res = request.response;
-    addCorsHeaders(res);
-    res
-      ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
-      ..write(JSON.encode(jsondata))
-      ..close();
-  }*/
-
 }
 clubsend() async{
 
