@@ -9,6 +9,7 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
+List my_stu=[];
 List club_send=[];
 List clubuser=[];
 var  name_check;
@@ -42,7 +43,7 @@ main() async {
       routercheck.route(request);
     }
     else if (request.uri.path == "/email") {
-      await studentpage();
+      await email();
       print("email page");
       await request.response
         ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
@@ -52,6 +53,16 @@ main() async {
       print(my_email);
       //my_email=[];
      // routercheck.route(request);
+    }
+    else if (request.uri.path == "/studentpage") {
+      await studentpage();
+      print("studentpage page");
+      await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(my_stu));
+      request.response.close();
+      print("hello");
+      print(my_email);
     }
     else if(request.uri.path == "/clubsend"){
       await clubsend();
@@ -172,30 +183,35 @@ check() async{
 
 }
 
-studentpage() async{
-
+email() async{
+  var name = JSON.decode(jsondata);
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var results = await pool.query('select club_name,club_inf from club_inf');
+  var results = await pool.query('select club_name,club_inf,stu_name from club_inf where stu_name= "${name}" ');
   await results.forEach((row) {
-    print('club: ${row[0]},inf: ${row[1]}');
+    print('club: ${row[0]},inf: ${row[2]}');
     my_email.add('${row[0]}');
     my_email.add('${row[1]}');
   });
   print (my_email);
   print("connect");
- /** var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
-  print("Serving at ${server.address}:${server.port}");
-  await for (var request in server) {
-    HttpResponse res = request.response;
-    addCorsHeaders(res);
-    res
-      ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
-      ..write(JSON.encode(jsondata))
-      ..close();
-  }*/
-
 }
+
+
+studentpage() async{
+  var name = JSON.decode(jsondata);
+  print("begin connect");
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select club_name,club_inf,stu_name from club_inf where stu_name= "${name}" ');
+  await results.forEach((row) {
+    print('club: ${row[0]},inf: ${row[2]}');
+    my_stu.add('${row[0]}');
+    my_stu.add('${row[1]}');
+  });
+  print (my_stu);
+  print("connect");
+}
+
 clubsend() async{
 
   print("begin connect");
