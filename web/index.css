@@ -45,14 +45,16 @@
     width:60px;
     height:40px;
     margin-top:150px;
-    font-family: 微软雅黑;
+    font-family: cursive;
     font-size: 16px;
-    color:#08819c;
+    color: #080808;
 }
 #ueser_password{
 	width:60px;
 	height:40px;
 	margin-top:150px;
+    color: #080808;
+    font-family: cursive;
 }
 
 #index_about{

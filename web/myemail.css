@@ -31,6 +31,7 @@
 	float:left;
 	margin-left: 60px;
 	width: 60px;
+	margin-top: 20px;
 
 }
 #club_name{
@@ -41,6 +42,7 @@
 	font-family: "微软雅黑";
 	margin-top: 23px;
 	float: left;
+	color:#ffffff;
 }
 
 #theme{
@@ -51,6 +53,7 @@
 	margin-top: 23px;
 	float: left;
 	margin-left: 5px;
+	color:#ffffff;
 }
 #contain{
 	height:200px;
@@ -62,6 +65,7 @@
 	margin-top: 0px;
 	height: 300px;
 	border: 1px solid #FFF;
+	color:#ffffff;
 
 }
 #button{
