@@ -11,6 +11,8 @@ var jsondata;
 List my_email=[];
 List club_send=[];
 List clubuser=[];
+var  name_check;
+var register_check;
 main() async {
 
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
@@ -22,9 +24,12 @@ main() async {
     //register(jsondata);
     //save(jsondata);
     if (request.uri.path == "/index") {
+      await register();
       print("index page");
-      register();
-      routerindex.route(request);
+      await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(name_check));
+      request.response.close();
     }
     else if (request.uri.path == "/stuform") {
       save();
@@ -58,7 +63,7 @@ main() async {
       print(club_send);
       club_send=[];}
 
-    else if(request.uri.path == "/clubsendstu"){
+    else if(request.uri.path == "/clubsendstu"){//根据客户端的查询要求，从数据库选择相应数据并传回客户端
       if (jsondata!="") {
         await clubsql();
         await request.response
@@ -68,6 +73,16 @@ main() async {
         print(clubuser);
         clubuser=[];
       }
+    }
+    else if(request.uri.path == "/clubsendsql"){//将发送的通知写入数据库
+      var sqllist = JSON.decode(jsondata);
+      var i;
+      print(sqllist);
+      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      for (i=0;i<sqllist.length;i++){
+        await pool.query(sqllist[i].toString());}
+
+
     }
     else {
       print("error!");
@@ -90,16 +105,33 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 register() async {
+  print("hello");
   var s = JSON.decode(jsondata);
   var name = s[0];
   var password = s[1];
   print(name);
   print(password);
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into login (password, name) values (?, ?)');
-  await query.execute(['${password}', '${name}']);
-}
+  var string = 'select * from login where name = "${name}" ';
+  var results = await pool.query(string);
+  await results.forEach((row) {
+    print('name: ${row[0]}');
+    register_check='${row[0]}';
+  });
+  if(register_check==null){
+    var query = await pool.prepare('insert into login (password, name) values (?, ?)');
+    await query.execute(['${password}', '${name}']);
+    print("insert");
+    name_check="true";
+  }
+  else{
+    print("已注册");
+    name_check="";
+  }
+  print(name_check);
+  register_check="";
 
+}
 save() async{
   var s = JSON.decode(jsondata);
   var name = s[0];

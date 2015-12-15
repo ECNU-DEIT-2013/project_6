@@ -16,7 +16,7 @@
         color: #3498db;
         font-weight: bold;
         background-repeat:no-repeat;
-        background-image: url(picture/background.jpg);
+        background-image: url(picture/clubsend.png);
     }
 
 </style>
@@ -25,19 +25,33 @@
 <div id="container">
     <div id="title">
     </div>
+    <div>
     <div id="clubselect">
     <select id="clubname" >
+        <option class="option" value="" disabled selected>请选择社团名称</option>
 
     </select>
 
-    <select id="state" >
+    <select id="state">
+        <option class="option" value="" disabled selected>请选择报名状态</option>
         <option value="已报名">已报名</option>
         <option value="已发送通知">已发送通知</option>
     </select>
-    <input id="search" type='image' src="picture/searchbutton.png">
     </div>
-    <input  id="test" type="text" >
-    <div id="nametest"></div>
+    <div id="searchbutton"> <input id="search" type='image' src="picture/searchbutton.png"></div>
+    </div>
+    <div id="left">
+        <div id="nametitle">请选择社员：</div>
+    <div id="namelist">
+
+    </div>
+    </div>
+    <div id="right">
+        <div id="messagetitle">请输入通知内容：</div>
+    <textarea id="message"></textarea>
+    <div id="clubbutton"> <input id="send" type='image' src="picture/send.png"></div>
+    </div>
 </div>
 </body>
+
 </html>
