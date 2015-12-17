@@ -25,7 +25,8 @@ requestComplete(HttpRequest request) {
     //200代表数据正确拿到
     my_email = JSON.decode(request.responseText);
     //decode代表解码
-    number=(my_email.length/2)-0;
+    var n=my_email.length.toInt();
+    number=n/2;
     querySelector("#theme").text=number.toString();
   }
   else {
