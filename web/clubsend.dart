@@ -45,6 +45,7 @@ void searchbutton(Event e){
 void sendmessage(Event e){
 
   var obj = document.getElementsByName("category");
+  var clubname = document.getElementById('clubname').value;
   var num=obj.length;
   var i;
   for(i=0;i<num;i++) {
@@ -56,7 +57,7 @@ void sendmessage(Event e){
   var message=document.getElementById("message").value;//获取textarea中所要发送的信息
   for(i=0;i<check_name.length;i++){
     //sqllist.add('UPDATE club_user SET message = "'+message.toString()+'" WHERE user_name="'+check_name[i]+'"');
-    sqllist.add('INSERT INTO user_message(user_name,message) VALUES("'+check_name[i]+'","'+message.toString()+'")');
+    sqllist.add('INSERT INTO user_message(user_name,club_name,message) VALUES("'+check_name[i]+'","'+clubname.toString()+'","'+message.toString()+'")');
   }
   var path = 'http://127.0.0.1:8080/clubsendsql';
   var httpRequest = new HttpRequest();
