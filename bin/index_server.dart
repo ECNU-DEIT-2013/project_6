@@ -189,9 +189,9 @@ email() async{
   var name = JSON.decode(jsondata);
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var results = await pool.query('select club_name,club_inf,stu_name from club_inf where stu_name= "${name}" ');
+  var results = await pool.query('select club_name,user_name from user_message where user_name= "${name}" ');
   await results.forEach((row) {
-    print('club: ${row[0]},inf: ${row[2]}');
+    print('club: ${row[0]},user: ${row[1]}');
     my_email.add('${row[0]}');
     my_email.add('${row[1]}');
   });
@@ -204,9 +204,9 @@ studentpage() async{
   var name = JSON.decode(jsondata);
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var results = await pool.query('select club_name,club_inf,stu_name from club_inf where stu_name= "${name}" ');
+  var results = await pool.query('select club_name,user_name from user_message where user_name= "${name}" ');
   await results.forEach((row) {
-    print('club: ${row[0]},inf: ${row[2]}');
+    print('club: ${row[0]},inf: ${row[1]}');
     my_stu.add('${row[0]}');
     my_stu.add('${row[1]}');
   });
