@@ -140,7 +140,9 @@ register() async {
     name_check="";
   }
   print(name_check);
-  register_check="";
+  print(register_check);
+  register_check=null;
+  print(register_check);
 
 }
 save() async{
