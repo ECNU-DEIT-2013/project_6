@@ -4,7 +4,7 @@ ImageElement picture1,picture2,picture3,picture4;
 var num=0;
 List<String> club_picture=[];
 void main(){
- /**for(int i=1;i<5;i++)
+ /*for(int i=1;i<5;i++)
  {club_picture[i]='club_picture/picture'+i.toString();
  }*/
 picture1=querySelector("#picture1");
@@ -20,7 +20,7 @@ picture4.src="club_picture/picture4.jpg";
  querySelector("#next").onClick.listen(nbutton);
 }
 void lbutton(Event e){
-  if(num==0) {alert('已经是最前页！');}
+  if(num==1) {alert('已经是最前页！');}
   else{
     num=num-4;
     picture1.src="club_picture[num]";
@@ -32,10 +32,12 @@ void lbutton(Event e){
 
 }
 void nbutton(Event e) {
-  int n;
-  if (num <= n - 4) {
+if(num!=5){
     num = num + 4;
-    picture1.src="picture/picture1.jpg";
+    picture1.src="club_picture[num]";
+    picture2.src="club_picture[num+1]";
+    picture3.src="club_picture[num+2]";
+    picture4.src="club_picture[num+3]";
   }
   else {
     alert('已经是最后一页！');
