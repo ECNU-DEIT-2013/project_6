@@ -24,7 +24,7 @@ void user_login(Event e){
   else{
     if (username=="admin")
       if(password=="admin")
-        window.location.href="myemail.html";
+        window.location.href="clubsend.html";
       else
         alert("密码错误");
     else

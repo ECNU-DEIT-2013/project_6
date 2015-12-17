@@ -12,18 +12,18 @@
     margin-left:10px;
 }
 #register{
-    width:140px;
-    height: 50px;
-    margin-left:10px;
+    width:106px;
+    height: 44px;
+    margin-left:35px;
     margin-top:0px;
     margin-right: 5px;
     float:left;
 }
 #login{
-    width:140px;
-    height: 50px;
+    width:106px;
+    height: 44px;
     margin-left: 170px;
-    margin-top:-50px;
+    margin-top:-43px;
     float:left;
 }
 #form{
@@ -50,17 +50,11 @@
     color: #080808;
 }
 #ueser_password{
-<<<<<<< HEAD
-	width:60px;
-	height:40px;
-	margin-top:150px;
-    color: #080808;
-    font-family: cursive;
-=======
     width:60px;
     height:40px;
     margin-top:150px;
->>>>>>> origin/master
+    color: #080808;
+    font-family: cursive;
 }
 
 #index_about{

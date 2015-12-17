@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:dialog/dialog.dart';
 import 'package:cookie/cookie.dart'as cookie;
 var num=0;
-int number;
+var number;
 List<String> my_email=[];
+
 
 void main(){
   var name=cookie.get('name');
@@ -24,19 +25,14 @@ requestComplete(HttpRequest request) {
     //200代表数据正确拿到
     my_email = JSON.decode(request.responseText);
     //decode代表解码
-    querySelector("#club_name").text=my_email[0].toString();
-    querySelector("#theme").text=my_email[0].toString();
-    querySelector("#contain").text=my_email[1].toString();
-    var num=my_email.length/2;
-    var n=num.toString();
-    cookie.set('email', '${n}' , expires: 7);
-    var s=cookie.get('email');
-    number=int.parse(s);
-    querySelector("#theme").text=s.toString();
+    number=(my_email.length/2)-0;
+    querySelector("#theme").text=number.toString();
   }
   else {
-    querySelector("#theme").text="error";
+    querySelector("#theme").text="0";
   }
+  querySelector("#club_name").text=my_email[0].toString();
+  querySelector("#contain").text=my_email[1].toString();
 }
 
 void previous_page(Event e){
