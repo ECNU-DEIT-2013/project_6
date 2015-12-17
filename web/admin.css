@@ -11,19 +11,12 @@
     height: 100px;
     margin-left:10px;
 }
-#register{
-    width:106px;
-    height: 44px;
-    margin-left:35px;
-    margin-top:0px;
-    margin-right: 5px;
-    float:left;
-}
+
 #login{
     width:106px;
     height: 44px;
-    margin-left: 170px;
-    margin-top:-43px;
+    margin-left: 100px;
+    margin-top:10px;
     float:left;
 }
 #form{
@@ -45,16 +38,18 @@
     width:60px;
     height:40px;
     margin-top:150px;
-    font-family: cursive;
-    font-size: 16px;
-    color: #080808;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    color: #3498db;
+
 }
 #ueser_password{
     width:60px;
     height:40px;
     margin-top:150px;
-    color: #080808;
-    font-family: cursive;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    color: #3498db;
 }
 
 #index_about{
@@ -77,6 +72,9 @@
     height: 300px;
     margin-left: 20px;
     margin-top: -140px;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    color: #3498db;
 }
 #test{
     margin-top: 10px;
@@ -88,22 +86,8 @@
     margin-left: 20px;
     width: 100px;
 }
-
 #text{
     font-size: 15px;
     font-family: 微软雅黑;
     color: #3498db;
-}
-#text1{
-    font-size: 15px;
-    font-family: 微软雅黑;
-    color: #3498db;
-}
-
-#text2{
-    font-size: 15px;
-    font-family: 微软雅黑;
-    color: #3498db;
-    float: left;
-    margin-left: 16px;
 }

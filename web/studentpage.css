@@ -44,9 +44,17 @@
     float:left;
 }
 #button_3{
-    width:230px;
-    height:230px;
+    width:199px;
+    height:226px;
     margin-left:85px;
-    margin-top:40px;
+    margin-top:45px;
     float:left;
+}
+
+#test{
+    width:100px;
+    height:40px;
+    margin-left: 30px;
+    font-family: 微软雅黑;
+    color: #080808;
 }

@@ -52,3 +52,16 @@
     font-family: "微软雅黑";
     color: #08819c;
 }
+#input1 {
+    height: 30px;
+    width: 260px;
+    border-top: 10px;
+    font-size: 22px;
+    font-family: "微软雅黑";
+    color: #08819c;
+}
+
+#test{
+    width:100px;
+    color:#08819c;
+}
