@@ -34,20 +34,31 @@
 	/*background-color:#000;*/
 	text-align:center;
 	}
+<<<<<<< HEAD
 #picture1
 {
 	padding-left:10px;
 	width: 250px;
+=======
+#picture1,#picture2,#picture3,#picture4
+{
+	padding-left:10px;
+	width: 240px;
+>>>>>>> refs/remotes/origin/10130340223
 	height: 250px;
 	margin-left: 15px;
 	margin-top: 50px;
 }
 
+<<<<<<< HEAD
 #picture1,#picture2,#picture3,#picture4{
 	float:left;
 	margin-top:20px;
 	padding-right:10px;
 	}
+=======
+
+>>>>>>> refs/remotes/origin/10130340223
 #last,#next{
     float:right;
 }

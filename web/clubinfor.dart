@@ -4,9 +4,15 @@ ImageElement picture1,picture2,picture3,picture4;
 var num=0;
 List<String> club_picture=[];
 void main(){
+<<<<<<< HEAD
  /*for(int i=1;i<5;i++)
  {club_picture[i]='club_picture/picture'+i.toString();
  }*/
+=======
+ for(int i=1;i<9;i++)
+ {club_picture[i]='club_picture/picture'+i.toString();
+ }
+>>>>>>> refs/remotes/origin/10130340223
 picture1=querySelector("#picture1");
 picture2=querySelector("#picture2");
 picture3=querySelector("#picture3");
