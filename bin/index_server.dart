@@ -95,6 +95,13 @@ main() async {
 
 
     }
+    else if(request.uri.path == "/contact"){//将发送的建议写入数据库
+      var advice = JSON.decode(jsondata);
+      print(advice);
+      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      var query = await pool.prepare('insert into contact(advice) values (?)');
+     await query.execute(['${advice}']);
+    }
     else {
       print("error!");
       /**
