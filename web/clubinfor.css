@@ -1,33 +1,53 @@
 @charset "utf-8";
 /* CSS Document */
 
-
 #container{
 	width:1200px;
 	height:675px;
 	float:left;
 }
-
-#title{
-	width:1200px;
-	height:140px;
+#index_about{
+	width:60px;
+	height:30px;
+	margin-left:1000px;
+	margin-top:20px;
+	margin-right:50px;
 	float:left;
 }
-#clubselect{
-	margin-left: 250px;
+#index_contact{
+	width:60px;
+	height:30px;
+	margin-left:20px;
+	margin-top:20px;
+	float:left;
 }
-#clubname{
-	margin-right:50px;
+#title
+{
+	color:#FFF;
+	text-align:center;
+	font-size: 36px;
+}
+#picture{
+	width:1100px;
+	height:400px;
+	margin-left:150px;
+	/*background-color:#000;*/
+	text-align:center;
+}
+#picture1,#picture2,#picture3,#picture4
+{
+	padding-left:10px;
+	width: 240px;
+	height: 250px;
+	margin-left: 15px;
+	margin-top: 50px;
+}
 
-}
-#state{
-	margin-right:50px;
-}
-select{
-	width:300px;
-	height:45px;
-}
 
-option{
-	height:45px;
+#last,#next{
+	float:right;
 }
+#picture a:hover{
+	background-color:#000}
+
+	
