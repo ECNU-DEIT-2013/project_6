@@ -12,6 +12,7 @@ List my_email=[];
 List my_stu=[];
 List club_send=[];
 List clubuser=[];
+List club_infor=[];
 var  name_check;
 var register_check;
 main() async {
@@ -73,6 +74,7 @@ main() async {
       request.response.close();
       print(club_send);
       club_send=[];}
+
 
     else if(request.uri.path == "/clubsendstu"){//根据客户端的查询要求，从数据库选择相应数据并传回客户端
       if (jsondata!="") {

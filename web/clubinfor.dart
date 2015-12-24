@@ -1,10 +1,18 @@
 import "dart:html";
 import 'package:dialog/dialog.dart';
+import 'dart:async';
+import 'dart:io';
+
 ImageElement picture1,picture2,picture3,picture4;
 var num=0;
 List<String> club_picture=[];
-void main(){
 
+void main(){
+  var path = 'http://127.0.0.1:8080/clubinfor';
+  var httprequest = new HttpRequest();
+  httprequest
+    ..open('POST', path)
+    ..send(JSON.encode(advice));
   picture1=querySelector("#picture1");
   picture2=querySelector("#picture2");
   picture3=querySelector("#picture3");
@@ -23,7 +31,7 @@ void main(){
   querySelector("#next").onClick.listen(nbutton);
 }
 void lbutton(Event e){
-  if(num==0) {alert('已经是最前页！');}
+  if(num==0) {alert('已经是最前页�?');}
   else{
     num=num-4;
     picture1.src=club_picture[num];
@@ -43,6 +51,6 @@ void nbutton(Event e) {
     picture4.src=club_picture[num+3];
   }
   else {
-    alert('已经是最后一页!');
+    alert('已经是最后一�?!');
   }
 }
