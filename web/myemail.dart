@@ -4,6 +4,7 @@ import 'package:dialog/dialog.dart';
 import 'package:cookie/cookie.dart'as cookie;
 var num=0;
 var number;
+var n;
 List<String> my_email=[];
 
 
@@ -25,21 +26,23 @@ requestComplete(HttpRequest request) {
     //200代表数据正确拿到
     my_email = JSON.decode(request.responseText);
     //decode代表解码
-    var n=my_email.length.toInt();
-    number=n/2;
+     n=my_email.length.toInt();
+     number=n/2;
     querySelector("#theme").text=number.toString();
   }
   else {
     querySelector("#theme").text="0";
   }
-  querySelector("#club_name").text=my_email[0].toString();
-  querySelector("#contain").text=my_email[1].toString();
+  num=n;
+  querySelector("#club_name").text=my_email[num-2].toString();
+  querySelector("#contain").text=my_email[num-1].toString();
+  num=n-2;
 }
 
 void previous_page(Event e){
-  if(num==0) {alert('已经是最前页');}
+  if(num==n) {alert('已经是最前页');}
   else{
-    num=num-2;
+    num=num+2;
     querySelector("#club_name").text=my_email[num].toString();
     querySelector("#contain").text=my_email[num+1].toString();
     querySelector("#theme").text=number.toString();
@@ -47,18 +50,23 @@ void previous_page(Event e){
 }
 
 void next_page(Event e){
-  int n=my_email.length-1;
-  if (num<=n-2){
-    num=num+2;
-    querySelector("#club_name").text=my_email[num].toString();
+  if (num==0){
+    number=number-1;
     if(number>0){
-      number=number-1;
+      querySelector("#club_name").text=my_email[num].toString();
+      querySelector("#theme").text=number.toString();
+      querySelector("#contain").text=my_email[num+1].toString();
     }
-    querySelector("#theme").text=number.toString();
-    querySelector("#contain").text=my_email[num+1].toString();
-
+    else{
+      alert('已经到最后一页');
+    }
   }
   else{
-    alert('已经到最后一页');
+    number=number-1;
+    num=num-2;
+    querySelector("#club_name").text=my_email[num].toString();
+    querySelector("#theme").text=number.toString();
+    querySelector("#contain").text=my_email[num+1].toString();
   }
+
 }

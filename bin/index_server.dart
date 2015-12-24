@@ -52,7 +52,7 @@ main() async {
         request.response.close();
       print("hello");
       print(my_email);
-      //my_email=[];
+      my_email=[];
      // routercheck.route(request);
     }
     else if (request.uri.path == "/studentpage") {
@@ -188,14 +188,25 @@ check() async{
 
   });
   //print(a);
-  if (a != null) print('ok');
-  else print('error');
+  if (a != null) {
+    print('ok');
+    var file=new File('temp.json');
+   // r_check="ok";
+    file.writeAsString(JSON.encode('ok'));}
+  else
+  {
+    print('error');
+    var file=new File('temp.json');
+  //  r_check="error";
+    file.writeAsString(JSON.encode('error'));
+  };
   // print(list);
 
 }
 
 email() async{
   var name = JSON.decode(jsondata);
+  print (name);
   print("begin connect");
   var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_name,user_name,message from user_message where user_name= "${name}" ');
