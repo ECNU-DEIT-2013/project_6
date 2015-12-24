@@ -12,7 +12,7 @@ List s=[];
 void main() {
   querySelector('#register').onClick.listen(user_register);
   querySelector('#login').onClick.listen(user_login);
-  querySelector('#login').onClick.listen(getrs);
+ // querySelector('#login').onClick.listen(getrs);
 }
 
 void user_register(Event e) {
@@ -62,7 +62,12 @@ void user_login(Event e) {
     httprequest
       ..open('POST', path)
       ..send(JSON.encode(list));//将list中的内容以json文件的格式传输给服务器
-
+    var path1 = 'http://localhost:63342/project_6/temp.json';
+    var httpRequest = new HttpRequest();
+    httpRequest
+      ..open('GET', path1)
+      ..onLoadEnd.listen((e) => requestComplete_login(httpRequest))
+      ..send('');
   }
 
 }
@@ -87,6 +92,7 @@ requestComplete(HttpRequest request) {
 
 void getrs(MouseEvent e){
   username = document.getElementById('user_name').value;
+  password=document.getElementById('user_name').value;
   var path = 'http://localhost:63342/project_6/temp.json';
   var httpRequest = new HttpRequest();
   httpRequest
@@ -101,6 +107,8 @@ requestComplete_login(HttpRequest request) {
     String rs1= portmanteaux[0].toString();
     if(rs1=='o'){
       window.location.href="stu.html";
+      cookie.set('name', '${username}', expires: 7);
+      cookie.set('password', '${password}', expires: 7);
     }
     else alert("登录失败");
     //alert("请重试！");
