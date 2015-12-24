@@ -188,8 +188,18 @@ check() async{
 
   });
   //print(a);
-  if (a != null) print('ok');
-  else print('error');
+  if (a != null) {
+    print('ok');
+    var file=new File('temp.json');
+   // r_check="ok";
+    file.writeAsString(JSON.encode('ok'));}
+  else
+  {
+    print('error');
+    var file=new File('temp.json');
+  //  r_check="error";
+    file.writeAsString(JSON.encode('error'));
+  };
   // print(list);
 
 }

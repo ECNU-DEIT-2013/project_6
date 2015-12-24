@@ -12,6 +12,7 @@ List s=[];
 void main() {
   querySelector('#register').onClick.listen(user_register);
   querySelector('#login').onClick.listen(user_login);
+  querySelector('#login').onClick.listen(getrs);
 }
 
 void user_register(Event e) {
@@ -81,5 +82,29 @@ requestComplete(HttpRequest request) {
       cookie.set('name', '${username}', expires: 7);
       cookie.set('password', '${password}', expires: 7);
     }
+  }
+}
+
+void getrs(MouseEvent e){
+  username = document.getElementById('user_name').value;
+  var path = 'http://localhost:63342/project_6/temp.json';
+  var httpRequest = new HttpRequest();
+  httpRequest
+    ..open('GET', path)
+    ..onLoadEnd.listen((e) => requestComplete_login(httpRequest))
+    ..send('');
+
+}
+requestComplete_login(HttpRequest request) {
+  if (request.status == 200) {
+    List<String> portmanteaux = JSON.decode(request.responseText);
+    String rs1= portmanteaux[0].toString();
+    if(rs1=='o'){
+      window.location.href="stu.html";
+    }
+    else alert("登录失败");
+    //alert("请重试！");
+  } else {
+    document.getElementById('user_name').value = 'Request failed, status=${request.status}';
   }
 }
