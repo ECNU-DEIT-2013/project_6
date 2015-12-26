@@ -79,8 +79,8 @@
     margin-top: -140px;
 }
 #test{
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 50px;
+    margin-left: 30px;
     width:100px;
 }
 #test_button{
@@ -106,4 +106,10 @@
     color: #3498db;
     float: left;
     margin-left: 16px;
+}
+
+#test1{
+    margin-top: 50px;
+    margin-left: 10px;
+    width:100px;
 }

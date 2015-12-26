@@ -9,11 +9,13 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
+
 List my_stu=[];
 List club_send=[];
 List clubuser=[];
 List club_infor=[];
 var  name_check;
+var check_name;
 var register_check;
 main() async {
 
@@ -39,9 +41,12 @@ main() async {
       routerstuform.route(request);
     }
     else if (request.uri.path == "/check") {
-      check();
+      await check();
       print("check page");
-      routercheck.route(request);
+      await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(check_name));
+      request.response.close();
     }
     else if (request.uri.path == "/email") {
       await email();
@@ -190,15 +195,20 @@ check() async{
   //print(a);
   if (a != null) {
     print('ok');
-    var file=new File('temp.json');
+    //var file=new File('temp.json');
+    check_name="ok";
+    print(check_name);
+  }
    // r_check="ok";
-    file.writeAsString(JSON.encode('ok'));}
+   // file.writeAsString(JSON.encode('ok'));}
   else
   {
     print('error');
-    var file=new File('temp.json');
+    check_name="error";
+    print(check_name);
+   // var file=new File('temp.json');
   //  r_check="error";
-    file.writeAsString(JSON.encode('error'));
+  //  file.writeAsString(JSON.encode('error'));
   };
   // print(list);
 
