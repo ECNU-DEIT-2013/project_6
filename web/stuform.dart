@@ -27,6 +27,10 @@ void main() {
   var name=cookie.get('name');
   var password =cookie.get('password');
   //querySelector('#user_name').text = name.toString();
+  if(name==null){
+    alert('请先登录');
+    window.location.href='index.html';
+  }
   document.getElementById('user_name').value = name.toString();
   list.add(name);
   querySelector("#save").onClick.listen((_) async{

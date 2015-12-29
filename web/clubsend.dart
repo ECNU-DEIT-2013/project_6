@@ -1,13 +1,18 @@
 import "dart:html";
 import 'dart:convert';
 import 'package:dialog/dialog.dart';
-
+import 'package:cookie/cookie.dart'as cookie;
 var clubname;
 var namelist;
 List check_name = [];
 List sqllist=[];
 
 void main(){
+  var name=cookie.get('name');
+  if(name==null){
+    alert('请先登录');
+    window.location.href='index.html';
+  }
   clubname = querySelector('#clubname');
   namelist = querySelector('#namelist');
   var path1 = 'http://127.0.0.1:8080/clubsend';
