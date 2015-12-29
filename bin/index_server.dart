@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
 import 'package:rest_frame/rest_frame.dart';
+import 'package:mailer/mailer.dart';
 
 Router routerindex = new Router();
 Router routerstuform = new Router();
@@ -71,6 +72,23 @@ main() async {
       print(my_email);
     }
     else if(request.uri.path == "/clubsend"){
+      var options = new SmtpOptions()
+        ..hostName='SMTP.163.com'
+        ..port=587
+       // ..secured=true
+       // ..requiresAuthentication=true
+        ..username = 'yjzhouecnu@163.com'
+        ..password = '376594393\=-mo';
+      var emailTransport = new SmtpTransport(options);
+      var envelope = new Envelope()
+        ..from = 'yjzhouecnu@163.com'
+        ..recipients.add('azhangyilei@163.com')
+        ..subject = 'Testing the Dart Mailer library 語'
+        ..text = 'This is a cool email message. Whats up? 語';
+      emailTransport.send(envelope)
+      .then((envelope) => print('Email sent!'))
+      .catchError((e) => print('Error occurred: $e'));
+      //发送邮件
       await clubsend();
       print("clubsend page");
       await request.response
