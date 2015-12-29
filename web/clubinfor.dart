@@ -31,7 +31,7 @@ void main(){
   querySelector("#next").onClick.listen(nbutton);
 }
 void lbutton(Event e){
-  if(num==0) {alert('已经是最前页�?');}
+  if(num==0) {alert('已经是最前页�?');}
   else{
     num=num-4;
     picture1.src=club_picture[num];
@@ -51,6 +51,6 @@ void nbutton(Event e) {
     picture4.src=club_picture[num+3];
   }
   else {
-    alert('已经是最后一�?!');
+    alert('已经是最后一页!');
   }
 }

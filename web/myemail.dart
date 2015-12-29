@@ -10,6 +10,10 @@ List<String> my_email=[];
 
 void main(){
   var name=cookie.get('name');
+  if(name==null){
+    alert('请先登录');
+    window.location.href='index.html';
+  }
   var path = 'http://127.0.0.1:8080/email';//唯一的地址URL
   var httpRequest = new HttpRequest();//访问web网站的协议（网上请求文件——ftp超文本传输协议）
   httpRequest
@@ -65,6 +69,7 @@ void next_page(Event e){
   }
   else{
     querySelector("#theme").text="无未读邮件";
+    alert('没有未读邮件');
     querySelector("#contain").text="";
     querySelector("#club_name").text="";
   }
