@@ -68,7 +68,7 @@ void user_login(Event e) {
 
 }
 
-requestComplete(HttpRequest request) {
+requestComplete(HttpRequest request)async {
   if (request.status == 200) {
     //200代表数据正确拿到
     s = JSON.decode(request.responseText);
@@ -78,23 +78,39 @@ requestComplete(HttpRequest request) {
     }
     else
     {
+      var confirm2=await confirm ('是否保存用户名和密码');
+      if(confirm2.toString()=='true'){
+        cookie.set('name', '${username}', expires: 7);
+        cookie.set('password', '${password}', expires: 7);
+      }
+      else{
+        cookie.set('name', '${username}', expires: 1/24);
+        cookie.set('password', '${password}', expires: 1/24);
+      }
+      await alert('注册成功！');
       window.location.href="stu.html";
-      alert('注册成功！');
-      cookie.set('name', '${username}', expires: 7);
-      cookie.set('password', '${password}', expires: 7);
     }
   }
 }
 
 
-requestComplete_login(HttpRequest request) {
+requestComplete_login(HttpRequest request) async {
   if (request.status == 200) {
     check = JSON.decode(request.responseText);
     if(check=="ok"){
+     //alert();
+     var confirm1=await confirm ('是否保存用户名和密码');
+     if(confirm1.toString()=='true'){
+       cookie.set('name', '${username}', expires: 7);
+       cookie.set('password', '${password}', expires: 7);
+     }
+     else{
+       cookie.set('name', '${username}', expires: 1/24);
+       cookie.set('password', '${password}', expires: 1/24);
+     }
+
+    await  alert("success");
      window.location.href="stu.html";
-      cookie.set('name', '${username}', expires: 7);
-      cookie.set('password', '${password}', expires: 7);
-      alert("success");
     }
     else{
       alert("登录失败");
