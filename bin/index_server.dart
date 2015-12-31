@@ -10,7 +10,7 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
-
+List emailaddress=[];
 List my_stu=[];
 List club_send=[];
 List clubuser=[];
@@ -72,23 +72,6 @@ main() async {
       print(my_email);
     }
     else if(request.uri.path == "/clubsend"){
-      var options = new SmtpOptions()
-        ..hostName='SMTP.163.com'
-        ..port=587
-       // ..secured=true
-       // ..requiresAuthentication=true
-        ..username = 'yjzhouecnu@163.com'
-        ..password = '376594393\=-mo';
-      var emailTransport = new SmtpTransport(options);
-      var envelope = new Envelope()
-        ..from = 'yjzhouecnu@163.com'
-        ..recipients.add('azhangyilei@163.com')
-        ..subject = 'Testing the Dart Mailer library 語'
-        ..text = 'This is a cool email message. Whats up? 語';
-      emailTransport.send(envelope)
-      .then((envelope) => print('Email sent!'))
-      .catchError((e) => print('Error occurred: $e'));
-      //发送邮件
       await clubsend();
       print("clubsend page");
       await request.response
@@ -118,6 +101,49 @@ main() async {
       for (i=0;i<sqllist.length;i++){
         await pool.query(sqllist[i].toString());}
 
+
+    }
+    else if(request.uri.path == "/clubsendemail"){//获取需要发送邮件用户的邮箱地址
+      var check_name = JSON.decode(jsondata);
+      var i;
+
+      print(check_name);
+      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      for (i=0;i<check_name.length;i++){
+        var sql='select user_email from user_inf where user_name = "'+check_name[i]+'"';
+        var results = await pool.query(sql.toString());
+        await results.forEach((row) {
+          print('email: ${row[0]}');
+          emailaddress.add('${row[0]}');
+        });
+      }
+      print(emailaddress);
+
+    }
+    else if(request.uri.path == "/clubsendmessage"){//获取message，并发送邮件
+      var i;
+      var message =jsondata;
+      var options = new SmtpOptions()
+        ..hostName='smtp.student.ecnu.edu.cn'
+        ..port=25
+      // ..secured=true
+      // ..requiresAuthentication=true
+        ..username = '10130340210@student.ecnu.edu.cn'
+        ..password = 'mo376594393';
+      var emailTransport = new SmtpTransport(options);
+      for (i=0;i<emailaddress.length;i++){
+      var envelope = new Envelope()
+        ..from = '10130340210@student.ecnu.edu.cn'
+        ..recipients.add(emailaddress[i])
+        ..subject = 'ECNU_CLUB 社团通知'
+        ..text = message;
+      emailTransport.send(envelope);
+     // .then(
+     //         (envelope) => print('Email sent!'))
+     // .catchError(
+     //         (e) => print('Error occurred: $e'));
+      }
+      //发送邮件
 
     }
     else if(request.uri.path == "/contact"){//将发送的建议写入数据库

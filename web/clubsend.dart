@@ -64,6 +64,18 @@ void sendmessage(Event e){
     //sqllist.add('UPDATE club_user SET message = "'+message.toString()+'" WHERE user_name="'+check_name[i]+'"');
     sqllist.add('INSERT INTO user_message(user_name,club_name,message) VALUES("'+check_name[i]+'","'+clubname.toString()+'","'+message.toString()+'")');
   }
+  var path1 = 'http://127.0.0.1:8080/clubsendemail';
+  var httpRequest1 = new HttpRequest();
+  httpRequest1
+    ..open('POST', path1)
+    ..onLoadEnd.listen((e) => requestComplete1(httpRequest1))
+    ..send(JSON.encode(check_name));
+  var path2 = 'http://127.0.0.1:8080/clubsendmessage';
+  var httpRequest2 = new HttpRequest();
+  httpRequest2
+    ..open('POST', path2)
+    ..onLoadEnd.listen((e) => requestComplete1(httpRequest2))
+    ..send(message);
   var path = 'http://127.0.0.1:8080/clubsendsql';
   var httpRequest = new HttpRequest();
   httpRequest
