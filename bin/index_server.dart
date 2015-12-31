@@ -146,6 +146,17 @@ main() async {
       //发送邮件
 
     }
+    else if(request.uri.path == "/clubinfor") {//从数据库调用社团信息到客户端
+      await clubinfor();
+      print("clubinfor page");
+      request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(club_infor));
+      request.response.close();
+      print("hello");
+      print(club_infor);
+
+    }
     else if(request.uri.path == "/contact"){//将发送的建议写入数据库
       var advice = JSON.decode(jsondata);
       print(advice);
@@ -310,4 +321,16 @@ clubsql() async{
     clubuser.add('${row[0]}');
   });
 
+}
+//连接数据库，调用社团信息
+clubinfor() async{
+  //print("begin ");
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select club_inf from club_inf ');
+  await results.forEach((row) {
+    //print('club_information: ${row[0]}');
+    club_infor.add('${row[0]}');
+  });
+//print (club_infor);
+//print("yes");
 }
