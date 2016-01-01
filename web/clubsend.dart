@@ -11,7 +11,7 @@ void main(){
   var name=cookie.get('name');
   if(name==null){
     alert('请先登录');
-    window.location.href='index.html';
+    window.location.href='admin.html';
   }
   clubname = querySelector('#clubname');
   namelist = querySelector('#namelist');
