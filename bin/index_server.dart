@@ -71,6 +71,12 @@ main() async {
       print("hello");
       print(my_email);
     }
+    else if(request.uri.path =='/stusign'){
+      //print("222222");
+      sign();
+      print("student_sign page");
+      routerstuform.route(request);
+    }
     else if(request.uri.path == "/clubsend"){
       await clubsend();
       print("clubsend page");
@@ -333,4 +339,18 @@ clubinfor() async{
   });
 //print (club_infor);
 //print("yes");
+}
+
+sign() async{
+  var s = JSON.decode(jsondata);
+  var stu_for = s[0];
+  var stu_hobby = s[1];
+  var stu_honor = s[2];
+  var stu_think = s[3];
+  var stu_fut = s[4];
+  var user_name=s[5];
+  print(s);
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var query = await pool.prepare('insert into sign (clubname,hobby,honor,think,future,name) values (?, ?, ?, ?, ?, ?)');
+  await query.execute(['${stu_for}', '${stu_hobby}', '${stu_honor}', '${stu_think}', '${stu_fut}', '${user_name}']);
 }
