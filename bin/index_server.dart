@@ -294,7 +294,7 @@ email() async{
 studentpage() async{
   var name = JSON.decode(jsondata);
   print("begin connect");
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_name,user_name,message from user_message where user_name= "${name}" ');
   await results.forEach((row) {
     print('club: ${row[0]},inf: ${row[2]}');
@@ -308,7 +308,7 @@ studentpage() async{
 clubsend() async{
 
   print("begin connect");
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select distinct club_name from club_user');
   await results.forEach((row) {
     print('clubname: ${row[0]}');
@@ -320,7 +320,7 @@ clubsend() async{
 clubsql() async{
   var sql = jsondata;
   print(sql);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query(sql);
   await results.forEach((row) {
     print('username: ${row[0]}');
@@ -331,7 +331,7 @@ clubsql() async{
 //连接数据库，调用社团信息
 clubinfor() async{
   //print("begin ");
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_inf from club_inf ');
   await results.forEach((row) {
     //print('club_information: ${row[0]}');
@@ -350,7 +350,7 @@ sign() async{
   var stu_fut = s[4];
   var user_name=s[5];
   print(s);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var query = await pool.prepare('insert into sign (clubname,hobby,honor,think,future,name) values (?, ?, ?, ?, ?, ?)');
   await query.execute(['${stu_for}', '${stu_hobby}', '${stu_honor}', '${stu_think}', '${stu_fut}', '${user_name}']);
 }
