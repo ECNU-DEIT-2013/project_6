@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>ECNU-CLUB</title>
+    <link  rel="stylesheet" href="student_sign.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/fakeloader.css">
+    <script async type="application/dart" src="student_sign.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fakeloader.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".fakeloader").fakeLoader({
+                timeToHide:1200,
+                bgColor:"#01bee8",
+                spinner:"spinner2"
+            });
+        });
+
+    </script>
+
+</head>
+
+<style>
+    body,td,th {
+        font-family: cursive;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: bold;
+        background-repeat:no-repeat;
+        background-image: url(picture/background.jpg);
+    }
+
+</style>
+</body>
+</html>
+<body>
+<div class="fakeloader"></div>
+<div id="container">
+    <div id="stuform">
+        <div id="title">
+
+        </div>
+
+        <form>
+            <p class="text">志愿社团:<br>
+                <input type="radio" name="for"  value="club1">社团1
+                <input type="radio" name="for" value="club2" >社团2
+                <input type="radio" name="for" value="club3">社团3
+                <input type="radio" name="for" value="club4" >社团4<br>
+                <input type="radio" name="for" value="club5">社团5
+                <input type="radio" name="for" value="club6" >社团6
+                <input type="radio" name="for" value="club7">社团7
+                <input type="radio" name="for" value="club8" >社团8</p>
+            <p class="text">爱好特长:<br> <input class="input"  id="user_hobby"type="text" placeholder="hobby"></p>
+            <p class="text">获奖记录:<br> <input class="input"  id="user_honor"type="text" placeholder="honor"></p>
+            <p class="text">对于社团的看法:<br> <input class="input"  id="user_think"type="text" placeholder="think"></p>
+            <p class="text">未来的展望:<br> <input  class="input" id="user_fut"type="text"  placeholder="fut"></p>
+
+        </form>
+    </div>
+    <div>
+        <input id="save" type='image' src="index_picture/savebutton.png">
+        <input id="reset" type='image' src="index_picture/resetbutton.png">
+        <a id="herf" href="studentpage.html"> <input id="return" type='image' src="index_picture/returnbutton.png"></a>
+    </div>
+</div>
+
+
+
+</body>
+</html>

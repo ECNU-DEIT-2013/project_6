@@ -57,14 +57,13 @@ void next_page(Event e){
   if (number!=0){
     if(num>0){
       num=num-2;
-      number=number-1;
+      //number=number-1;
       querySelector("#club_name").text=my_email[num].toString();
       querySelector("#theme").text=number.toString();
       querySelector("#contain").text=my_email[num+1].toString();
     }
     else{
       alert('已经到最后一页');
-      querySelector("#theme").text="0";
     }
   }
   else{

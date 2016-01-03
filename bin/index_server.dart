@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:sqljocky/sqljocky.dart';
 import 'dart:convert';
 import 'package:rest_frame/rest_frame.dart';
+import 'package:mailer/mailer.dart';
 
 Router routerindex = new Router();
 Router routerstuform = new Router();
@@ -9,7 +10,7 @@ Router routercheck = new Router();
 var jsondata;
 //全局变量，用于接收客户端传来的数据。
 List my_email=[];
-
+List emailaddress=[];
 List my_stu=[];
 List club_send=[];
 List clubuser=[];
@@ -70,6 +71,12 @@ main() async {
       print("hello");
       print(my_email);
     }
+    else if(request.uri.path =='/stusign'){
+      //print("222222");
+      sign();
+      print("student_sign page");
+      routerstuform.route(request);
+    }
     else if(request.uri.path == "/clubsend"){
       await clubsend();
       print("clubsend page");
@@ -100,6 +107,60 @@ main() async {
       for (i=0;i<sqllist.length;i++){
         await pool.query(sqllist[i].toString());}
 
+
+    }
+    else if(request.uri.path == "/clubsendemail"){//获取需要发送邮件用户的邮箱地址
+      var check_name = JSON.decode(jsondata);
+      var i;
+
+      print(check_name);
+      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      for (i=0;i<check_name.length;i++){
+        var sql='select user_email from user_inf where user_name = "'+check_name[i]+'"';
+        var results = await pool.query(sql.toString());
+        await results.forEach((row) {
+          print('email: ${row[0]}');
+          emailaddress.add('${row[0]}');
+        });
+      }
+      print(emailaddress);
+
+    }
+    else if(request.uri.path == "/clubsendmessage"){//获取message，并发送邮件
+      var i;
+      var message =jsondata;
+      var options = new SmtpOptions()
+        ..hostName='smtp.student.ecnu.edu.cn'
+        ..port=25
+      // ..secured=true
+      // ..requiresAuthentication=true
+        ..username = '10130340210@student.ecnu.edu.cn'
+        ..password = 'mo376594393';
+      var emailTransport = new SmtpTransport(options);
+      for (i=0;i<emailaddress.length;i++){
+      var envelope = new Envelope()
+        ..from = '10130340210@student.ecnu.edu.cn'
+        ..recipients.add(emailaddress[i])
+        ..subject = 'ECNU_CLUB 社团通知'
+        ..text = message;
+      emailTransport.send(envelope);
+     // .then(
+     //         (envelope) => print('Email sent!'))
+     // .catchError(
+     //         (e) => print('Error occurred: $e'));
+      }
+      //发送邮件
+
+    }
+    else if(request.uri.path == "/clubinfor") {//从数据库调用社团信息到客户端
+      await clubinfor();
+      print("clubinfor page");
+      request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(club_infor));
+      request.response.close();
+      print("hello");
+      print(club_infor);
 
     }
     else if(request.uri.path == "/contact"){//将发送的建议写入数据库
@@ -266,4 +327,30 @@ clubsql() async{
     clubuser.add('${row[0]}');
   });
 
+}
+//连接数据库，调用社团信息
+clubinfor() async{
+  //print("begin ");
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var results = await pool.query('select club_inf from club_inf ');
+  await results.forEach((row) {
+    //print('club_information: ${row[0]}');
+    club_infor.add('${row[0]}');
+  });
+//print (club_infor);
+//print("yes");
+}
+
+sign() async{
+  var s = JSON.decode(jsondata);
+  var stu_for = s[0];
+  var stu_hobby = s[1];
+  var stu_honor = s[2];
+  var stu_think = s[3];
+  var stu_fut = s[4];
+  var user_name=s[5];
+  print(s);
+  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var query = await pool.prepare('insert into sign (clubname,hobby,honor,think,future,name) values (?, ?, ?, ?, ?, ?)');
+  await query.execute(['${stu_for}', '${stu_hobby}', '${stu_honor}', '${stu_think}', '${stu_fut}', '${user_name}']);
 }
