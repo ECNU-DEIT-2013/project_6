@@ -103,7 +103,7 @@ main() async {
       var sqllist = JSON.decode(jsondata);
       var i;
       print(sqllist);
-      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
       for (i=0;i<sqllist.length;i++){
         await pool.query(sqllist[i].toString());}
 
@@ -114,7 +114,7 @@ main() async {
       var i;
 
       print(check_name);
-      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
       for (i=0;i<check_name.length;i++){
         var sql='select user_email from user_inf where user_name = "'+check_name[i]+'"';
         var results = await pool.query(sql.toString());
@@ -144,6 +144,7 @@ main() async {
         ..subject = 'ECNU_CLUB 社团通知'
         ..text = message;
       emailTransport.send(envelope);
+        emailaddress=[];
      // .then(
      //         (envelope) => print('Email sent!'))
      // .catchError(
@@ -166,7 +167,7 @@ main() async {
     else if(request.uri.path == "/contact"){//将发送的建议写入数据库
       var advice = JSON.decode(jsondata);
       print(advice);
-      var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+      var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
       var query = await pool.prepare('insert into contact(advice) values (?)');
      await query.execute(['${advice}']);
     }
@@ -197,7 +198,7 @@ register() async {
   var password = s[1];
   print(name);
   print(password);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var string = 'select * from login where name = "${name}" ';
   var results = await pool.query(string);
   await results.forEach((row) {
@@ -231,7 +232,7 @@ save() async{
   var email = s[6];
   var tel = s[7];
   print(s);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var query = await pool.prepare('insert into user_inf (user_name,user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?, ?)');
   await query.execute(['${name}', '${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
 }
@@ -244,7 +245,7 @@ check() async{
   var password = s[1];
   print(name);
   print(password);
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var string = 'select * from login where name = "${name}" and password = "${password}" ';
   var results = await pool.query(string);
   await results.forEach((row) {
@@ -279,7 +280,7 @@ email() async{
   var name = JSON.decode(jsondata);
   print (name);
   print("begin connect");
-  var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var results = await pool.query('select club_name,user_name,message from user_message where user_name= "${name}" ');
   await results.forEach((row) {
     print('club: ${row[0]},user: ${row[2]}');

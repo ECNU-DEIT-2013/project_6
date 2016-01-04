@@ -91,10 +91,11 @@ void sendmessage(Event e){
 requestComplete(HttpRequest request) {
   if (request.status == 200) {
     List<String> clubsend = JSON.decode(request.responseText);
-    for (int i = 0; i < clubsend.length; i++) {
-      var myclub = new Element.html('<option value="'+clubsend[i]+'">'+clubsend[i]+'</option>');
-      clubname.children.add(myclub);
-   }
+
+      for (int i = 0; i < clubsend.length; i++) {
+        var myclub = new Element.html('<option value="' + clubsend[i] + '">' + clubsend[i] + '</option>');
+        clubname.children.add(myclub);
+      }
     clubsend = [];
   }
   else {
@@ -106,11 +107,12 @@ requestComplete1(HttpRequest request) {
     List<String> clubuser = JSON.decode(request.responseText);
     var elem=new Element.html('<div id="namelist"></div>');
     querySelector('#namelist').replaceWith(elem);
-    for (int i = 0; i < clubuser.length; i++) {
-     // querySelector('#namelist').children.add(new LIElement()..text =  clubuser[i]);
-      var elem1=new Element.html(' <p><input type="checkbox" name="category" value="'+clubuser[i]+'" />'+clubuser[i]+' </p>');
-      querySelector('#namelist').children.add(elem1);
-    }
+      for (int i = 0; i < clubuser.length; i++) {
+        // querySelector('#namelist').children.add(new LIElement()..text =  clubuser[i]);
+        var elem1 = new Element.html(' <p><input type="checkbox" name="category" value="' + clubuser[i] + '" />' + clubuser[i] + ' </p>');
+        querySelector('#namelist').children.add(elem1);
+      }
+
     clubuser = [];
   }
   else {
