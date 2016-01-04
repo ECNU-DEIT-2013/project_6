@@ -30,7 +30,7 @@ void main() {
   if(name==null){
    alert('请先登录');
     window.location.href='index.html';}
-//  document.getElementById('user_name').value = name.toString();
+   document.getElementById('user_name').value = name.toString();
   list.add(name);
   querySelector("#save").onClick.listen((_) async{
     var myConfirm1 = await confirm("是否保存基本信息？");
