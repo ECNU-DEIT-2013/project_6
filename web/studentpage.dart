@@ -8,7 +8,8 @@ InputElement todoInput;
 List<String> my_email=[];//存放从服务器中传过来的值
 void main(){
   var name=cookie.get('name');
-  if(name=='null'){
+document.getElementById('test').value=name.toString();
+  if(name==null){
    alert('请先登录');
    window.location.href='index.html';
   }

@@ -74,7 +74,8 @@ requestComplete(HttpRequest request)async {
     s = JSON.decode(request.responseText);
     //decode代表解码
     if (s==""){
-      alert('用户名已经存在');
+       alert('用户名已经存在');
+
     }
     else
     {
