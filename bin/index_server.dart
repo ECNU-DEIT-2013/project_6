@@ -222,9 +222,12 @@ register() async {
     print('name: ${row[0]}');
     register_check='${row[0]}';
   });
+
   if(register_check==null){
     var query = await pool.prepare('insert into login (password, name) values (?, ?)');
     await query.execute(['${password}', '${name}']);
+    var query1 = await pool.prepare('insert into user_inf (user_name) values (?)');
+    await query1.execute(['${name}']);
     print("insert");
     name_check="true";
   }
