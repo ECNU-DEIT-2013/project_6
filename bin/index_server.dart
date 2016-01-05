@@ -15,6 +15,8 @@ List my_stu=[];
 List club_send=[];
 List clubuser=[];
 List club_infor=[];
+List stu_inf=[];
+var nameall;
 var  name_check;
 var check_name;
 var register_check;
@@ -40,6 +42,21 @@ main() async {
       save();
       print("stuform page");
       routerstuform.route(request);
+    }
+    else if (request.uri.path == "/stuforminf") {
+      await stuinf();
+      print("stuforminf");
+      await request.response
+        ..headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      request.response.write(JSON.encode(stu_inf));
+      request.response.close();
+      print(stu_inf);
+      stu_inf=[];
+
+    }
+    else if (request.uri.path == "/stuformname") {
+      nameall=jsondata;
+     print(nameall);
     }
     else if (request.uri.path == "/check") {
       await check();
@@ -231,10 +248,15 @@ save() async{
   var dorm = s[5];
   var email = s[6];
   var tel = s[7];
+  nameall=name;
   print(s);
   var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
-  var query = await pool.prepare('insert into user_inf (user_name,user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?, ?)');
-  await query.execute(['${name}', '${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+  var sql='UPDATE user_inf SET user_sex="'+sex+'",user_department="'+department+'",user_major="'+major+'",user_grade="'+grade+'",user_dorm="'+dorm+'",user_email="'+email+'",user_tel="'+tel+'" where user_name="'+nameall+'"';
+  print(sql);
+  await pool.query(sql);
+  //var query = await pool.prepare('insert into user_inf (user_name,user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel) values (?, ?, ?, ?, ?, ?, ?, ?)');
+  //await query.execute(['${name}', '${sex}', '${department}', '${major}', '${grade}', '${dorm}', '${email}', '${tel}']);
+
 }
 
 check() async{
@@ -317,6 +339,16 @@ clubsend() async{
   });
   print (club_send);
 
+}
+stuinf() async{
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
+  print(nameall);
+  var results = await pool.query('select user_sex,user_department,user_major,user_grade,user_dorm,user_email,user_tel from user_inf where user_name="'+nameall.toString()+'"');
+  await results.forEach((row) {
+    for(var i=0;i<7;i++){
+    print('${row[i]}');
+    stu_inf.add('${row[i]}');}
+  });
 }
 clubsql() async{
   var sql = jsondata;

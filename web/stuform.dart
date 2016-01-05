@@ -32,6 +32,11 @@ void main() {
     window.location.href='index.html';}
    document.getElementById('user_name').value = name.toString();
   list.add(name);
+  var path2 = 'http://127.0.0.1:8080/stuformname';
+  var httpRequest2 = new HttpRequest();
+  httpRequest2
+    ..open('POST', path2)
+    ..send(name);
   var path1 = 'http://127.0.0.1:8080/stuforminf';
   var httpRequest = new HttpRequest();
   httpRequest
