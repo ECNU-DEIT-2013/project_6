@@ -377,5 +377,7 @@ sign() async{
   print(s);
   var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340210');
   var query = await pool.prepare('insert into sign (clubname,hobby,honor,think,future,name) values (?, ?, ?, ?, ?, ?)');
+  var query1=await pool.prepare('insert into club_user (club_name,user_name,state) values (?, ?, ?)');
   await query.execute(['${stu_for}', '${stu_hobby}', '${stu_honor}', '${stu_think}', '${stu_fut}', '${user_name}']);
+  await query1.execute(['${stu_for}', '${user_name}','已报名']);
 }
