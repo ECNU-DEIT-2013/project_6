@@ -2,7 +2,6 @@ import 'dart:html';
 import 'package:cookie/cookie.dart'as cookie;
 import 'package:dialog/dialog.dart';
 
-
 void main(){
   var name=cookie.get('name');
   if(name==null){

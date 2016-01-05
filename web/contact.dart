@@ -6,6 +6,12 @@ var advice;
 void main(){
   querySelector("#reset").onClick.listen(reset);
   querySelector("#send").onClick.listen(send);
+  var name=cookie.get('name');
+  var password =cookie.get('password');
+  //querySelector('#user_name').text = name.toString();
+  if(name==null){
+    alert('请先登录');
+    window.location.href='index.html';}
 }
 void reset(Event e){
   document.getElementById('email').value="";

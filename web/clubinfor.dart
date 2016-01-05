@@ -7,6 +7,12 @@ var num=0;
 List<String> club_picture=[];
 List<String> club_infor=[];
 void main() {
+  var name=cookie.get('name');
+  var password =cookie.get('password');
+  //querySelector('#user_name').text = name.toString();
+  if(name==null){
+    alert('请先登录');
+    window.location.href='index.html';}
   var path = 'http://127.0.0.1:8080/clubinfor';
   var httprequest = new HttpRequest();
   httprequest
