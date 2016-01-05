@@ -2,19 +2,20 @@
 /* CSS Document */
 #container{
 	width:1200px;
-	height:675px;
+	height:600px;
 	float:left;
 	margin-top: 100px;
 }
 #send{
 	float:left;
-	margin-left: 500px;
-	margin-top: -250px;
+	margin-left: 480px;
+	margin-top:10px;
 }
 #reset{
 	float:left;
-	margin-left: 700px;
-	margin-top: -250px;
+	margin-left: 200px;
+	margin-top:10px;
+
 }
 #email{
 	width:800px;

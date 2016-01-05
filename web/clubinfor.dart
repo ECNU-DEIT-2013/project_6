@@ -1,15 +1,15 @@
 import "dart:html";
 import 'package:dialog/dialog.dart';
 import 'dart:convert';
+import 'package:cookie/cookie.dart'as cookie;
+
 
 ImageElement picture1,picture2,picture3,picture4;
 var num=0;
 List<String> club_picture=[];
 List<String> club_infor=[];
 void main() {
-  var name=cookie.get('name');
-  var password =cookie.get('password');
-  //querySelector('#user_name').text = name.toString();
+ var name=cookie.get('name');
   if(name==null){
     alert('请先登录');
     window.location.href='index.html';}
