@@ -91,6 +91,7 @@
 
 #last,#next{
 	float:right;
+	margin-top: 25px;
 }
 #picture a:hover{
 	background-color:#000}

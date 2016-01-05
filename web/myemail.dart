@@ -6,8 +6,6 @@ var num=0;
 var number;
 var n;
 List<String> my_email=[];
-
-
 void main(){
   var name=cookie.get('name');
   if(name==null){
@@ -21,9 +19,8 @@ void main(){
     ..onLoadEnd.listen((e) => requestComplete(httpRequest))
     ..open('POST', path)
     ..send(JSON.encode(name));
-  querySelector('#button1').onClick.listen(previous_page);
-  querySelector('#button').onClick.listen(next_page);
-
+  querySelector('#button1').onClick.listen(previous_page);//上一页按钮
+  querySelector('#button').onClick.listen(next_page);//下一页按钮
 }
 requestComplete(HttpRequest request) {
   if (request.status == 200) {
@@ -52,7 +49,6 @@ void previous_page(Event e){
     querySelector("#theme").text=number.toString();
   }
 }
-
 void next_page(Event e){
   if (number!=0){
     if(num>0){
@@ -72,5 +68,4 @@ void next_page(Event e){
     querySelector("#contain").text="";
     querySelector("#club_name").text="";
   }
-
 }

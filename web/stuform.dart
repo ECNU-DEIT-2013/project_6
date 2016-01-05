@@ -32,6 +32,12 @@ void main() {
     window.location.href='index.html';}
    document.getElementById('user_name').value = name.toString();
   list.add(name);
+  var path1 = 'http://127.0.0.1:8080/stuforminf';
+  var httpRequest = new HttpRequest();
+  httpRequest
+    ..open('GET', path1)
+    ..onLoadEnd.listen((e) => requestComplete(httpRequest))
+    ..send();
   querySelector("#save").onClick.listen((_) async{
     var myConfirm1 = await confirm("是否保存基本信息？");
     if (myConfirm1.toString()=='true'){
@@ -101,4 +107,21 @@ void user_reset() {
   document.getElementById('user_dorm').value="";
   document.getElementById('user_email').value="";
   document.getElementById('user_tel').value="";
+}
+
+requestComplete(HttpRequest request) {
+  if (request.status == 200) {
+    List<String> stuinf = JSON.decode(request.responseText);
+      document.getElementById('user_sex').value=stuinf[0];
+      document.getElementById('user_department').value=stuinf[1];
+      document.getElementById('user_major').value=stuinf[2];
+      document.getElementById('user_grade').value=stuinf[3];
+      document.getElementById('user_dorm').value=stuinf[4];
+      document.getElementById('user_email').value=stuinf[5];
+      document.getElementById('user_tel').value=stuinf[6];
+    stuinf = [];
+  }
+  else {
+    alert("error");
+  }
 }

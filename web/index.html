@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>ECNU-CLUB</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="style.css">
-    <script async type="application/dart" src="index_client.dart"></script>
+    <link rel="stylesheet" href="index.css"><!--连接index.css-->
+    <link rel="stylesheet" href="style.css"><!--连接style.css-->
+    <script async type="application/dart" src="index_client.dart"></script><!--连接index_client.dart-->
     <script async src="packages/browser/dart.js"></script>
     <script src='js/jquery-1.7.2.min.js'></script>
     <script src='js/jquery.complexify.js'></script>
@@ -20,10 +20,8 @@
                 $('#complexity').html(Math.round(complexity) + '%');
             });
         });
-    </script>
-
+    </script><!--页面缓冲效果设置-->
 </head>
-
 <style>
     body,td,th {
         font-family: cursive;
@@ -34,15 +32,32 @@
         background-repeat:no-repeat;
     }
 </style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/fakeloader.css"><!--缓冲效果-->
+<script src="js/jquery.min.js"></script>
+<script src="js/fakeloader.min.js"></script>
+<script async type="application/dart" src="file.dart"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#01bee8",
+            spinner:"spinner2"
+        });
+    });
+</script><!--缓冲效果-->
 <body>
+<div class="fakeloader"></div>
 <div id="container">
-
-    <input id="index_about" type='image' src="index_picture/about.png"> <a href="contact.html">
-<input id="index_contact" type='image' src="index_picture/contact.png"></a>
-
+    <a href="about.html"><input id="index_about" type='image' src="index_picture/about.png"></a>
+    <a href="contact.html"> <input id="index_contact" type='image' src="index_picture/contact.png"></a>
     <div id="words_eclub">
-        <img src="index_picture/E-CLUB.png" />
+        <img src="index_picture/E-CLUB.png" /><!--logo图片-->
     </div>
     <div id="form">
         <br></br>
@@ -52,7 +67,6 @@
         <div id="form_text">
             <br></br>
             <br></br>
-
             <p id="text"> 用户名 <input id="user_name" type="text" placeholder="用户名" ></p>
             <br></br>
             <p id="text1">密码&nbsp;&nbsp;&nbsp;<input id="user_password" type="password" placeholder="密码"></p>
@@ -63,20 +77,11 @@
             </div>
         </div>
         <div id="qiangdu"><p id="text2">弱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强</p></div>
-
-
         <div>
             <input id="register" type='image' src="index_picture/register.png" >
             <input id="login" type='image' src="index_picture/login.png">
         </div>
     </div>
-
-
 </div>
-
-
-
-
-
 </body>
 </html>
