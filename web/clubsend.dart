@@ -4,10 +4,12 @@ import 'package:dialog/dialog.dart';
 import 'package:cookie/cookie.dart'as cookie;
 var clubname;
 var namelist;
+var host;
 List check_name = [];
 List sqllist=[];
 
 void main(){
+  host= 'http://127.0.0.1';
   var name=cookie.get('name');
   if(name==null){
     alert('请先登录');
@@ -15,7 +17,7 @@ void main(){
   }
   clubname = querySelector('#clubname');
   namelist = querySelector('#namelist');
-  var path1 = 'http://127.0.0.1:8080/clubsend';
+  var path1 = host+':8080/clubsend';
   var httpRequest = new HttpRequest();
   httpRequest
     ..open('GET', path1)
@@ -32,7 +34,7 @@ void searchbutton(Event e){
   var sql='SELECT user_name FROM club_user WHERE club_name="'+clubname.toString()+'" AND state="'+state.toString()+'"';
   // document.getElementById('test').value=sql.toString();
 
-  var path = 'http://127.0.0.1:8080/clubsendstu';
+  var path =  host+':8080/clubsendstu';
   /**
    * comment by feng xiang ：问题：为何两次请求？你第二次请求上没有send(sql)，当然无法获取正确
    * 值。并且你第一个请求没有listen，所以根本无法获取。
@@ -64,19 +66,19 @@ void sendmessage(Event e){
     //sqllist.add('UPDATE club_user SET message = "'+message.toString()+'" WHERE user_name="'+check_name[i]+'"');
     sqllist.add('INSERT INTO user_message(user_name,club_name,message) VALUES("'+check_name[i]+'","'+clubname.toString()+'","'+message.toString()+'")');
   }
-  var path1 = 'http://127.0.0.1:8080/clubsendemail';
+  var path1 =  host+':8080/clubsendemail';
   var httpRequest1 = new HttpRequest();
   httpRequest1
     ..open('POST', path1)
     ..onLoadEnd.listen((e) => requestComplete1(httpRequest1))
     ..send(JSON.encode(check_name));
-  var path2 = 'http://127.0.0.1:8080/clubsendmessage';
+  var path2 = host+':8080/clubsendmessage';
   var httpRequest2 = new HttpRequest();
   httpRequest2
     ..open('POST', path2)
     ..onLoadEnd.listen((e) => requestComplete1(httpRequest2))
     ..send(message);
-  var path = 'http://127.0.0.1:8080/clubsendsql';
+  var path = host+':8080/clubsendsql';
   var httpRequest = new HttpRequest();
   httpRequest
     ..open('POST', path)

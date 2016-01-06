@@ -19,11 +19,12 @@ var usermajor;
 var userdorm;
 var useremail;
 var usertel;
+var host;
 List list=[];
 
 
 void main() {
-
+  host= 'http://127.0.0.1';
   var name=cookie.get('name');
   var password =cookie.get('password');
   //querySelector('#user_name').text = name.toString();
@@ -32,12 +33,12 @@ void main() {
     window.location.href='index.html';}
    document.getElementById('user_name').value = name.toString();
   list.add(name);
-  var path2 = 'http://127.0.0.1:8080/stuformname';
+  var path2 = host+':8080/stuformname';
   var httpRequest2 = new HttpRequest();
   httpRequest2
     ..open('POST', path2)
     ..send(name);
-  var path1 = 'http://127.0.0.1:8080/stuforminf';
+  var path1 = host+':8080/stuforminf';
   var httpRequest = new HttpRequest();
   httpRequest
     ..open('GET', path1)
@@ -88,7 +89,7 @@ void user_save(){
   list.add(userdorm);
   list.add(useremail);
   list.add(usertel);
-  var path = 'http://127.0.0.1:8080/stuform';
+  var path = host+':8080/stuform';
   var httprequest = new HttpRequest();
   httprequest
     ..open('POST', path)
