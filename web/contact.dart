@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:dialog/dialog.dart';
 TextAreaElement email;
 var advice;
+var host;
 void main(){
+  host='http://127.0.0.1';
   querySelector("#reset").onClick.listen(reset);
   querySelector("#send").onClick.listen(send);
   var name=cookie.get('name');
@@ -24,7 +26,7 @@ void send(Event e){
     document.getElementById('email').value="" ;}
   else
   {alert('\n发送内容不能为空！');}
-  var path = 'http://127.0.0.1:8080/contact';
+  var path =host+ ':8080/contact';
   var httprequest = new HttpRequest();
   httprequest
     ..open('POST', path)

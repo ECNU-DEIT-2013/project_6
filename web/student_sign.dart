@@ -16,11 +16,13 @@ var userhobby;
 var userhonor;
 var userthink;
 var userfut;
+var host;
 
 List list=[];
 
 
 void main() {
+  host='http://127.0.0.1';
   var name=cookie.get('name');
   var password =cookie.get('password');
   //querySelector('#user_name').text = name.toString();
@@ -82,7 +84,7 @@ void user_save(){
   list.add(userfut);
   list.add(name);
 
-  var path = 'http://127.0.0.1:8080/stusign';
+  var path = host+':8080/stusign';
   var httprequest = new HttpRequest();
   httprequest
     ..open('POST', path)

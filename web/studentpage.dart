@@ -4,14 +4,16 @@ import 'dart:convert';
 import 'package:dialog/dialog.dart';
 ImageElement button_3;//存放图片
 InputElement todoInput;
+var host;
 List<String> my_email=[];//存放从服务器中传过来的值
 void main(){
+  host='http://127.0.0.1';
   var name=cookie.get('name');
   if(name==null){
    alert('请先登录');
    window.location.href='index.html';
   }
-  var path = 'http://127.0.0.1:8080/studentpage';//唯一的地址URL
+  var path = host+':8080/studentpage';//唯一的地址URL
   var httpRequest = new HttpRequest();//访问web网站的协议（网上请求文件——ftp超文本传输协议）
   httpRequest
     //..open('GET', path)//拨号，打开一条通道

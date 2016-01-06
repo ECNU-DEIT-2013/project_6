@@ -5,14 +5,17 @@ import 'package:cookie/cookie.dart'as cookie;
 var num=0;
 var number;
 var n;
+var host;
 List<String> my_email=[];
+
 void main(){
   var name=cookie.get('name');
   if(name==null){
     alert('请先登录');
     window.location.href='index.html';
   }
-  var path = 'http://127.0.0.1:8080/email';//唯一的地址URL
+  host='http://127.0.0.1';
+  var path = host+':8080/email';//唯一的地址URL
   var httpRequest = new HttpRequest();//访问web网站的协议（网上请求文件——ftp超文本传输协议）
   httpRequest
     ..open('GET', path)//拨号，打开一条通道

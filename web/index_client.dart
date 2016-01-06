@@ -5,10 +5,12 @@ import 'package:dialog/dialog.dart';
 
 var username;
 var password;
+var host;
 List list=[];
 List s=[];
 List check=[];
 void main() {
+  host='http://127.0.0.1';
   querySelector('#register').onClick.listen(user_register);
   querySelector('#login').onClick.listen(user_login);
 }
@@ -24,7 +26,7 @@ void user_register(Event e) {
   else{
     list.add(username);
     list.add(password);//在list上加入用户名和密码的信息
-    var path ='http://127.0.0.1:8080/index';
+    var path =host+':8080/index';
     var httprequest = new HttpRequest();
     httprequest
       ..open('GET', path)//拨号，打开一条通道
@@ -47,7 +49,7 @@ void user_login(Event e) {
   else{
     list.add(username);
     list.add(password);//在list上加入用户名和密码的信息
-    var path ='http://127.0.0.1:8080/check';
+    var path =host+':8080/check';
     var httprequest = new HttpRequest();
     httprequest
       ..open('POST', path)

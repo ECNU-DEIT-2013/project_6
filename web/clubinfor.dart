@@ -6,6 +6,7 @@ import 'package:cookie/cookie.dart'as cookie;
 
 ImageElement picture1,picture2,picture3,picture4;
 var num=0;
+var host;
 List<String> club_picture=[];
 List<String> club_infor=[];
 void main() {
@@ -13,7 +14,8 @@ void main() {
   if(name==null){
     alert('请先登录');
     window.location.href='index.html';}
-  var path = 'http://127.0.0.1:8080/clubinfor';
+   host='http://127.0.0.1';
+  var path =host+ ':8080/clubinfor';
   var httprequest = new HttpRequest();
   httprequest
     ..open('GET', path)
