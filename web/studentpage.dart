@@ -25,7 +25,7 @@ requestComplete(HttpRequest request) {
     my_email = JSON.decode(request.responseText);
     var num=my_email.length;
     //document.getElementById('test').value=my_email.toString();//判断是否有新消息
-    button_3=querySelector('#button_3');
+    button_3=querySelector("#button_3");
     if(num==0) {
       button_3.src="index_picture/button3.png";//在没有新消息的情况下，使用button_3图片
     }
