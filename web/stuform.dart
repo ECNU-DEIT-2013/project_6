@@ -26,11 +26,11 @@ List list=[];
 void main() {
   host= 'http://127.0.0.1';
   var name=cookie.get('name');
-  var password =cookie.get('password');
   //querySelector('#user_name').text = name.toString();
   if(name==null){
-   alert('请先登录');
-    window.location.href='index.html';}
+    alert('请先登录');
+    window.location.href='index.html';
+  }
    document.getElementById('user_name').value = name.toString();
   list.add(name);
   var path2 = host+':8080/stuformname';
