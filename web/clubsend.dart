@@ -9,7 +9,7 @@ List check_name = [];
 List sqllist=[];
 
 void main(){
-  host= 'http://127.0.0.1';
+  host='http://52.193.36.64';
   var name=cookie.get('name');
   if(name==null){
     alert('请先登录');

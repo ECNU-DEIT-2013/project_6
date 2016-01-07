@@ -7,7 +7,7 @@ InputElement todoInput;
 var host;
 List<String> my_email=[];//存放从服务器中传过来的值
 void main(){
-  host='http://127.0.0.1';
+  host='http://52.193.36.64';
   var name=cookie.get('name');
   if(name==null){
    alert('请先登录');

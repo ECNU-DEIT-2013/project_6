@@ -14,7 +14,7 @@ void main(){
     alert('请先登录');
     window.location.href='index.html';
   }
-  host='http://127.0.0.1';
+  host='http://52.193.36.64';
   var path = host+':8080/email';//唯一的地址URL
   var httpRequest = new HttpRequest();//访问web网站的协议（网上请求文件——ftp超文本传输协议）
   httpRequest

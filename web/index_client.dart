@@ -10,7 +10,7 @@ List list=[];
 List s=[];
 List check=[];
 void main() {
-  host='http://127.0.0.1';
+  host='http://52.193.36.64';
   querySelector('#register').onClick.listen(user_register);
   querySelector('#login').onClick.listen(user_login);
 }

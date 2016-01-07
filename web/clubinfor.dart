@@ -14,7 +14,7 @@ void main() {
   if(name==null){
     alert('请先登录');
     window.location.href='index.html';}
-   host='http://127.0.0.1';
+ host='http://52.193.36.64';
   var path =host+ ':8080/clubinfor';
   var httprequest = new HttpRequest();
   httprequest

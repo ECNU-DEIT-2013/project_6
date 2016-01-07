@@ -5,7 +5,7 @@ TextAreaElement email;
 var advice;
 var host;
 void main(){
-  host='http://127.0.0.1';
+  host='http://52.193.36.64';
   querySelector("#reset").onClick.listen(reset);
   querySelector("#send").onClick.listen(send);
   var name=cookie.get('name');
